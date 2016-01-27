@@ -1,0 +1,49 @@
+<!-- NAVBAR -->
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- agrupar para mobile -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-submenu-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%%= link_to "<%= plural_table_name.titleize %>", <%= index_helper %>_path, class: 'navbar-brand' %>
+    </div>
+  
+    <!-- links da navbar -->
+    <div class="collapse navbar-collapse navbar-submenu-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <p class="navbar-btn">
+          <%%= link_to <%= index_helper %>_path, class: 'btn btn-default' do %>
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            Voltar
+          <%% end %>
+
+          <%%= link_to edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: 'btn btn-default' do %>
+            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+            Editar
+          <%% end %>
+          </p>
+        </li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+</nav>
+<!-- /NAVBAR -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <% attributes.reject(&:password_digest?).each do |attribute| -%>
+      <p>
+        <strong><%= attribute.human_name %>:</strong>
+        <%%= @<%= singular_table_name %>.<%= attribute.name %> %>
+      </p>
+      <% end -%>
+    </div>
+  </div>
+</div>

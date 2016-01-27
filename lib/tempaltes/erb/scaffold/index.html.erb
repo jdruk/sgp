@@ -1,0 +1,94 @@
+<!-- NAVBAR -->
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- agrupar para mobile -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-submenu-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%%= link_to "<%= plural_table_name.titleize %>", <%= index_helper %>_path, class: 'navbar-brand' %>
+    </div>
+  
+    <!-- links da navbar -->
+    <div class="collapse navbar-collapse navbar-submenu-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <p class="navbar-btn">
+          <%%= link_to new_<%= singular_table_name %>_path, class: 'btn btn-default' do %>
+            <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+            Novo
+          <%% end %>
+          </p>
+        </li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+</nav>
+<!-- /NAVBAR -->
+
+<!-- TABLE -->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <% attributes.reject(&:password_digest?).each do |attribute| -%>
+              <th><%= attribute.human_name %></th>
+              <% end -%>
+              <th style="width: 20%;">Ações</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <%% @<%= plural_table_name %>.each do |<%= singular_table_name %>| %>
+              <tr>
+                <% attributes.reject(&:password_digest?).each do |attribute| -%>
+                <td><%%= <%= singular_table_name %>.<%= attribute.name %> %></td>
+                <% end -%>
+                <td>                    
+                  <%%= link_to <%= singular_table_name %>, class: 'btn btn-default', title: 'Exibir' do %>
+                  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                  <%% end %>
+                  <%%= link_to edit_<%= singular_table_name %>_path(<%= singular_table_name %>), class: 'btn btn-default', title: 'Editar' do %>
+                  <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                  <%% end %>
+                  <%%= link_to "#modal-id-#{<%= singular_table_name %>.id}", class: 'btn btn-default', title: 'Remover', 'data-toggle': 'modal' do %>
+                  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                  <%% end %>
+                </td>
+              </tr>
+              <!-- MODAL -->
+              <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+                <div class="modal fade" id="modal-id-<%%= <%= singular_table_name %>.id %>">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Alerta!</h4>
+                      </div>
+                      <div class="modal-body">
+                        <p>Deseja realmente remover <strong><%%= <%= singular_table_name %>.<%= attributes.reject(&:password_digest?).first.name %> %></strong>?</p>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        <%%= link_to 'Remover', <%= singular_table_name %>, method: :delete, class: 'btn btn-danger' %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /MODAL -->
+            <%% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /TABLE -->
