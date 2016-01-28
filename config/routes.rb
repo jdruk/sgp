@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :user_abilities
   resources :user_languages
   devise_for :users
   resources :task_requirements

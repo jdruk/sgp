@@ -36,3 +36,4 @@ rails g scaffold user_language proficiency:integer user:references language:refe
 
 rails g model function_user_project project:references user:references function:references
 
+rails g scaffold user_ability points:integer user:references ability:references

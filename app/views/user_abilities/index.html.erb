@@ -1,0 +1,94 @@
+<!-- NAVBAR -->
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- agrupar para mobile -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-submenu-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to "User Abilities", user_abilities_path, class: 'navbar-brand' %>
+    </div>
+  
+    <!-- links da navbar -->
+    <div class="collapse navbar-collapse navbar-submenu-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <p class="navbar-btn">
+          <%= link_to new_user_ability_path, class: 'btn btn-default' do %>
+            <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+            Novo
+          <% end %>
+          </p>
+        </li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+</nav>
+<!-- /NAVBAR -->
+
+<!-- TABLE -->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+                            <th>Points</th>
+                            <th>User</th>
+                            <th>Ability</th>
+                            <th style="width: 20%;">Ações</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @user_abilities.each do |user_ability| %>
+              <tr>
+                                <td><%= user_ability.points %></td>
+                                <td><%= user_ability.user %></td>
+                                <td><%= user_ability.ability %></td>
+                                <td>                    
+                  <%= link_to user_ability, class: 'btn btn-default', title: 'Exibir' do %>
+                  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                  <% end %>
+                  <%= link_to edit_user_ability_path(user_ability), class: 'btn btn-default', title: 'Editar' do %>
+                  <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                  <% end %>
+                  <%= link_to "#modal-id-#{user_ability.id}", class: 'btn btn-default', title: 'Remover', 'data-toggle': 'modal' do %>
+                  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                  <% end %>
+                </td>
+              </tr>
+              <!-- MODAL -->
+              <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+                <div class="modal fade" id="modal-id-<%= user_ability.id %>">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Alerta!</h4>
+                      </div>
+                      <div class="modal-body">
+                        <p>Deseja realmente remover <strong><%= user_ability.points %></strong>?</p>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        <%= link_to 'Remover', user_ability, method: :delete, class: 'btn btn-danger' %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /MODAL -->
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /TABLE -->
