@@ -1,4 +1,24 @@
 Rails.application.routes.draw do
+
+  resources :user_languages
+  devise_for :users
+  resources :task_requirements
+  resources :tasks
+  resources :user_story_acceptance_criterions
+  resources :user_stories
+  resources :sprints
+  resources :releases
+  resources :themes
+  resources :projects
+  resources :functions
+  resources :abilities
+  resources :locals
+  resources :languages
+  get 'static/index'
+
+  root 'static#index'
+
+  resources :languages
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
