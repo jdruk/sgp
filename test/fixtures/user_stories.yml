@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyText
+  business_value: 1
+  story_points: 1
+  status: 1
+  theme_id: 
+  sprint_id: 
+
+two:
+  description: MyText
+  business_value: 1
+  story_points: 1
+  status: 1
+  theme_id: 
+  sprint_id: 

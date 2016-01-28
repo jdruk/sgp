@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <%= form_for(@task_requirement) do |f| %>
+
+      <% if @task_requirement.errors.any? %>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <p><strong>Wops!</strong></p>
+            <ul>
+            <% @task_requirement.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6">
+              <div class="form-group">
+                <%= f.label :level %>
+          <%= f.number_field :level, class: 'form-control' %>
+              </div>
+        
+              <div class="form-group">
+                <%= f.label :task_id %>
+          <%= f.text_field :task_id, class: 'form-control' %>
+              </div>
+        
+              <div class="form-group">
+                <%= f.label :ability_id %>
+          <%= f.text_field :ability_id, class: 'form-control' %>
+              </div>
+        
+              <div class="form-group">
+          <%= f.button type: 'submit', class: 'btn btn-primary' do %>
+            <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+            Salvar
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>    

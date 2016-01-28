@@ -1,0 +1,63 @@
+<!-- NAVBAR -->
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- agrupar para mobile -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-submenu-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to "Projects", projects_path, class: 'navbar-brand' %>
+    </div>
+  
+    <!-- links da navbar -->
+    <div class="collapse navbar-collapse navbar-submenu-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <p class="navbar-btn">
+          <%= link_to projects_path, class: 'btn btn-default' do %>
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            Voltar
+          <% end %>
+
+          <%= link_to edit_project_path(@project), class: 'btn btn-default' do %>
+            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+            Editar
+          <% end %>
+          </p>
+        </li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+</nav>
+<!-- /NAVBAR -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <p>
+        <strong>Name:</strong>
+        <%= @project.name %>
+      </p>
+            <p>
+        <strong>Size:</strong>
+        <%= @project.size %>
+      </p>
+            <p>
+        <strong>Start date:</strong>
+        <%= @project.start_date %>
+      </p>
+            <p>
+        <strong>End date:</strong>
+        <%= @project.end_date %>
+      </p>
+            <p>
+        <strong>Local:</strong>
+        <%= @project.local %>
+      </p>
+          </div>
+  </div>
+</div>

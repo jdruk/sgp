@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  version: MyString
+  deliver_date: 2016-01-28
+  project_id: 
+
+two:
+  version: MyString
+  deliver_date: 2016-01-28
+  project_id: 

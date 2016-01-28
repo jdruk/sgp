@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <%= form_for(@ability) do |f| %>
+
+      <% if @ability.errors.any? %>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <p><strong>Wops!</strong></p>
+            <ul>
+            <% @ability.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6">
+              <div class="form-group">
+                <%= f.label :name %>
+          <%= f.text_field :name, class: 'form-control' %>
+              </div>
+        
+              <div class="form-group">
+                <%= f.label :description %>
+          <%= f.text_area :description, class: 'form-control' %>
+              </div>
+        
+              <div class="form-group">
+                <%= f.label :scope %>
+          <%= f.number_field :scope, class: 'form-control' %>
+              </div>
+        
+              <div class="form-group">
+          <%= f.button type: 'submit', class: 'btn btn-primary' do %>
+            <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+            Salvar
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>    

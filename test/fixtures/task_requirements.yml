@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  level: 1
+  task_id: 
+  ability_id: 
+
+two:
+  level: 1
+  task_id: 
+  ability_id: 

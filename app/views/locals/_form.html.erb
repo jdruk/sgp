@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row">
+    <%= form_for(@local) do |f| %>
+
+      <% if @local.errors.any? %>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <p><strong>Wops!</strong></p>
+            <ul>
+            <% @local.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6">
+              <div class="form-group">
+                <%= f.label :name %>
+          <%= f.text_field :name, class: 'form-control' %>
+              </div>
+        
+              <div class="form-group">
+                <%= f.label :country %>
+          <%= f.text_field :country, class: 'form-control' %>
+              </div>
+        
+              <div class="form-group">
+                <%= f.label :state %>
+          <%= f.text_field :state, class: 'form-control' %>
+              </div>
+        
+              <div class="form-group">
+                <%= f.label :city %>
+          <%= f.text_field :city, class: 'form-control' %>
+              </div>
+        
+              <div class="form-group">
+                <%= f.label :zip_code %>
+          <%= f.text_field :zip_code, class: 'form-control' %>
+              </div>
+        
+              <div class="form-group">
+          <%= f.button type: 'submit', class: 'btn btn-primary' do %>
+            <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+            Salvar
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>    
