@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
 
+  get 'dashboard/index'
+
+  #devise_for :users, :controllers  => {
+  #           :registrations => 'users/registrations',
+  #           :sessions => 'users/sessions'
+  #         }
+
   resources :user_abilities
   resources :user_languages
   devise_for :users
