@@ -38,7 +38,7 @@
         
               <div class="form-group">
                 <%= f.label :local_id %>
-          <%= f.text_field :local_id, class: 'form-control' %>
+          <%= f.collection_select(:local_id,Local.all,:id,:name,{:prompt=>true},{class:'form-control'}) %>
               </div>
         
               <div class="form-group">

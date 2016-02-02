@@ -33,12 +33,12 @@
         
               <div class="form-group">
                 <%= f.label :status %>
-          <%= f.number_field :status, class: 'form-control' %>
+                <%= f.select :status, options_for_select([:pendent,:development,:completed]), {}, { :class => 'form-control' } %> 
               </div>
         
               <div class="form-group">
                 <%= f.label :user_story_id %>
-          <%= f.text_field :user_story_id, class: 'form-control' %>
+                <%= f.collection_select(:user_story_id,UserStory.all,:id,:description,{:prompt=>false},{class:'form-control'}) %>
               </div>
         
               <div class="form-group">

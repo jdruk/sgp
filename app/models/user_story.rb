@@ -1,4 +1,6 @@
 class UserStory < ActiveRecord::Base
+  enum status: [:pendent,:development,:completed,:test]
+
   belongs_to :theme
   belongs_to :sprint
   has_many :user_story_acceptance_criterions

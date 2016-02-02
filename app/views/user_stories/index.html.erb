@@ -55,8 +55,8 @@
                                 <td><%= user_story.business_value %></td>
                                 <td><%= user_story.story_points %></td>
                                 <td><%= user_story.status %></td>
-                                <td><%= user_story.theme %></td>
-                                <td><%= user_story.sprint %></td>
+                                <td><%= user_story.theme.name %></td>
+                                <td><%= user_story.sprint.name unless user_story.sprint.nil? %></td>
                                 <td>                    
                   <%= link_to user_story, class: 'btn btn-default', title: 'Exibir' do %>
                   <span class="glyphicon glyphicon-search" aria-hidden="true"></span>

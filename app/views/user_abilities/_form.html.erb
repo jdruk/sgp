@@ -23,12 +23,12 @@
         
               <div class="form-group">
                 <%= f.label :user_id %>
-          <%= f.text_field :user_id, class: 'form-control' %>
+                <%= f.collection_select(:user_id,User.all,:id,:email,{:prompt=>false},{class:'form-control'}) %>
               </div>
         
               <div class="form-group">
                 <%= f.label :ability_id %>
-          <%= f.text_field :ability_id, class: 'form-control' %>
+                <%= f.collection_select(:ability_id,Ability.all,:id,:name,{:prompt=>false},{class:'form-control'}) %>
               </div>
         
               <div class="form-group">

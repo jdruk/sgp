@@ -38,6 +38,7 @@
         <table class="table table-hover">
           <thead>
             <tr>
+                            <th>Name</th>
                             <th>Start date</th>
                             <th>End date</th>
                             <th>Planning start date</th>
@@ -55,6 +56,7 @@
           <tbody>
             <% @sprints.each do |sprint| %>
               <tr>
+                                 <td><%= sprint.name %></td>
                                 <td><%= sprint.start_date %></td>
                                 <td><%= sprint.end_date %></td>
                                 <td><%= sprint.planning_start_date %></td>
@@ -63,8 +65,8 @@
                                 <td><%= sprint.execution_end_date %></td>
                                 <td><%= sprint.review_meeting_date %></td>
                                 <td><%= sprint.retrospective_meeting_date %></td>
-                                <td><%= sprint.project %></td>
-                                <td><%= sprint.release %></td>
+                                <td><%= sprint.project.name %></td>
+                                <td><%= sprint.release.version unless sprint.release.nil? %></td>
                                 <td>                    
                   <%= link_to sprint, class: 'btn btn-default', title: 'Exibir' do %>
                   <span class="glyphicon glyphicon-search" aria-hidden="true"></span>

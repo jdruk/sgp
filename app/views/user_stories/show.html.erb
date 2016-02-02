@@ -56,11 +56,11 @@
       </p>
             <p>
         <strong>Theme:</strong>
-        <%= @user_story.theme %>
+        <%= @user_story.theme.name %>
       </p>
             <p>
         <strong>Sprint:</strong>
-        <%= @user_story.sprint %>
+        <%= @user_story.sprint.name unless @user_story.sprint.nil? %>
       </p>
           </div>
   </div>

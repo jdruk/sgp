@@ -39,6 +39,11 @@
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <p>
+        <strong>Name:</strong>
+        <%= @sprint.name %>
+      </p>
+            <p>
+            <p>
         <strong>Start date:</strong>
         <%= @sprint.start_date %>
       </p>
@@ -72,11 +77,11 @@
       </p>
             <p>
         <strong>Project:</strong>
-        <%= @sprint.project %>
+        <%= @sprint.project.name %>
       </p>
             <p>
         <strong>Release:</strong>
-        <%= @sprint.release %>
+        <%= @sprint.release.version unless @sprint.release.nil? %>
       </p>
           </div>
   </div>
