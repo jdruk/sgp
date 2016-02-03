@@ -36,4 +36,5 @@ Rails.application.routes.draw do
   resources :languages
   devise_for :users
   resources :users
+  resources :function_user_projects
 end
