@@ -40,7 +40,6 @@
             <tr>
                             <th>Function</th>
                             <th>User</th>
-                            <th>Project</th>
                             <th style="width: 20%;">Ações</th>
             </tr>
           </thead>
@@ -48,9 +47,8 @@
           <tbody>
             <% @function_user_projects.each do |function_user_project| %>
               <tr>
-                                <td><%= function_user_project.function %></td>
-                                <td><%= function_user_project.user %></td>
-                                <td><%= function_user_project.project %></td>
+                                <td><%= function_user_project.function.name %></td>
+                                <td><%= function_user_project.user.name %></td>
                                 <td>                    
                   <%= link_to function_user_project, class: 'btn btn-default', title: 'Exibir' do %>
                   <span class="glyphicon glyphicon-search" aria-hidden="true"></span>

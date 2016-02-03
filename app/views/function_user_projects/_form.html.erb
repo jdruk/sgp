@@ -18,17 +18,12 @@
     <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6">
               <div class="form-group">
                 <%= f.label :function_id %>
-          <%= f.text_field :function_id, class: 'form-control' %>
+                <%= f.collection_select(:function_id,Function.all,:id,:name,{:prompt=>false},{class:'form-control'}) %>
               </div>
         
               <div class="form-group">
                 <%= f.label :user_id %>
-          <%= f.text_field :user_id, class: 'form-control' %>
-              </div>
-        
-              <div class="form-group">
-                <%= f.label :project_id %>
-          <%= f.text_field :project_id, class: 'form-control' %>
+                <%= f.collection_select(:user_id,User.all,:id,:name,{:prompt=>false},{class:'form-control'}) %>
               </div>
         
               <div class="form-group">
