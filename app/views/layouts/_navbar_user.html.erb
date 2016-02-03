@@ -1,18 +1,55 @@
 <ul class="nav navbar-nav">
-     <li><%= link_to "Projetos",projects_path %></li>
-     <li><%= link_to "Usuarios",new_user_registration_path %></li>
-     <li><%= link_to "Funções",functions_path %></li>
-     <li><%= link_to "Languagens",languages_path %></li>
-     <li><%= link_to "Sprints",sprints_path %></li>
-     <li><%= link_to "Atividades",tasks_path %></li>
-     <li><%= link_to "Languagens",languages_path %></li>
-     <li><%= link_to "Temas",themes_path %></li>
-     <li><%= link_to "Habilidades",abilities_path %></li>
-     <li><%= link_to "Localidades",locals_path %></li>
-     <li><%= link_to "Release",releases_path %></li>
-     <li><%= link_to "User Story",user_stories_path %></li>
-     <li><%= link_to "User Habilidades",user_abilities_path %></li>
-     <li><%= link_to "Requerimentos de atividade",task_requirements_path %></li>          
-     <li><%= link_to "Criterios de aceitação",user_story_acceptance_criterions_path %></li>
-     <li> <%= link_to "Sair", destroy_user_session_path,  method: :delete, data: { confirm: 'Você deseja sair??' } %></li>
+  <li><%= link_to "Projetos",projects_path %></li>
+
+  <li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+      <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+      Configurações
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li><%= link_to "Funções",functions_path %></li>
+      <li><%= link_to "Usuarios",new_user_registration_path %></li>
+      <li><%= link_to "Languagens",languages_path %></li>
+      <li><%= link_to "Habilidades",abilities_path %></li>
+      <li><%= link_to "User Habilidades",user_abilities_path %></li>
+      <li><%= link_to "Localidades",locals_path %></li>
+    </ul>
+  </li>
+
+  <li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+      <span class="glyphicon glyphicon-th" aria-hidden="true"></span>
+      Scrum
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li><%= link_to "Releases",releases_path %></li>
+      <li><%= link_to "Sprints",sprints_path %></li>
+      <li><%= link_to "Temas",themes_path %></li>
+      <li><%= link_to "User Story",user_stories_path %></li>
+      <li><%= link_to "Criterios de aceitação",user_story_acceptance_criterions_path %></li>
+      <li><%= link_to "Tarefas",tasks_path %></li>
+      <li><%= link_to "Requerimentos de tarefas",task_requirements_path %></li>
+    </ul>
+  </li>
+</ul>
+
+<ul class="nav navbar-nav navbar-right">
+  <li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+      <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+      <%# current_user.name %>
+      Usuário
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <%= link_to destroy_user_session_path, method: :delete do %>
+        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+        Sair
+        <% end %>
+      </li>
+    </ul>
+  </li>
 </ul>
