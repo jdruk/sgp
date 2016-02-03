@@ -6,5 +6,10 @@ class UserStory < ActiveRecord::Base
   has_many :user_story_acceptance_criterions
   has_many :tasks
   
+  validates :description, presence: true
+  validates :business_value, presence: true
+  validates :story_points, presence: true
+  validates :status, presence: true
+  validates :theme_id, presence: true
 
 end
