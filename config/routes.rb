@@ -32,4 +32,5 @@ Rails.application.routes.draw do
   resources :locals
   resources :languages
   devise_for :users
+  resources :users
 end
