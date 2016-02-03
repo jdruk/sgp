@@ -11,21 +11,21 @@
       </button>
       <%= link_to "User Stories", user_stories_path, class: 'navbar-brand' %>
     </div>
-  
+
     <!-- links da navbar -->
     <div class="collapse navbar-collapse navbar-submenu-collapse">
       <ul class="nav navbar-nav navbar-right">
         <li>
           <p class="navbar-btn">
-          <%= link_to user_stories_path, class: 'btn btn-default' do %>
+            <%= link_to user_stories_path, class: 'btn btn-default' do %>
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
             Voltar
-          <% end %>
+            <% end %>
 
-          <%= link_to edit_user_story_path(@user_story), class: 'btn btn-default' do %>
+            <%= link_to edit_user_story_path(@user_story), class: 'btn btn-default' do %>
             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
             Editar
-          <% end %>
+            <% end %>
           </p>
         </li>
       </ul>
@@ -38,30 +38,59 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <p>
+      <p>
         <strong>Description:</strong>
         <%= @user_story.description %>
       </p>
-            <p>
+      <p>
         <strong>Business value:</strong>
         <%= @user_story.business_value %>
       </p>
-            <p>
+      <p>
         <strong>Story points:</strong>
         <%= @user_story.story_points %>
       </p>
-            <p>
+      <p>
         <strong>Status:</strong>
         <%= @user_story.status %>
       </p>
-            <p>
+      <p>
         <strong>Theme:</strong>
-        <%= @user_story.theme.name %>
+        <%= @user_story.theme.name unless @user_story.theme.nil? %>
       </p>
-            <p>
+      <p>
         <strong>Sprint:</strong>
         <%= @user_story.sprint.name unless @user_story.sprint.nil? %>
       </p>
-          </div>
+
+      <hr/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active">
+          <a href="#tab_acceptance_criterions" aria-controls="tab_acceptance_criterions" role="tab" data-toggle="tab">
+            Critérios de aceitação
+          </a>
+        </li>
+
+        <li role="presentation">
+          <a href="#tab_tasks" aria-controls="tab_tasks" role="tab" data-toggle="tab">
+            Tarefas
+          </a>
+        </li>
+      </ul>
+
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="tab_acceptance_criterions">
+          <p>critérios de aceitação</p>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="tab_tasks">
+          <p>Tarefas...</p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

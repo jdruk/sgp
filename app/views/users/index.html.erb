@@ -54,7 +54,7 @@
                                 <td><%= user.name %></td>
                                 <td><%= user.schedule %></td>
                                 <td><%= user.group %></td>
-                                <td><%= user.local %></td>
+                                <td><%= user.local.name unless user.local.nil? %></td>
                                 <td>                    
                   <%= link_to user, class: 'btn btn-default', title: 'Exibir' do %>
                   <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
