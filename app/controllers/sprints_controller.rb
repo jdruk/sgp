@@ -1,5 +1,8 @@
 class SprintsController < ApplicationController
   before_action :set_sprint, only: [:show, :edit, :update, :destroy]
+  before_filter do
+    redirect_to no_project_selected_path unless has_project_selected?
+  end
 
   # GET /sprints
   # GET /sprints.json

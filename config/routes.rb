@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   get '/select/project/:id', to: 'projects#select', as: 'select_project'
   delete '/deselect/project', to: 'projects#deselect', as: 'deselect_project'
 
+  # errors controller
+  get '/wops/no_project_selected', to: 'errors#no_project_selected', as: 'no_project_selected'
+
   #devise_for :users, :controllers  => {
   #           :registrations => 'users/registrations',
   #           :sessions => 'users/sessions'
