@@ -9,7 +9,7 @@
     </a>
     <ul class="dropdown-menu">
       <li><%= link_to "Funções",functions_path %></li>
-      <li><%= link_to "Usuarios",new_user_registration_path %></li>
+      <li><%= link_to "Usuarios",users_path %></li>
       <li><%= link_to "Languagens",languages_path %></li>
       <li><%= link_to "Habilidades",abilities_path %></li>
       <li><%= link_to "User Habilidades",user_abilities_path %></li>
@@ -62,6 +62,12 @@
       <b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
+      <li>
+        <%= link_to edit_user_registration_path do %>
+        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+        Editar perfil
+        <% end %>
+      </li>
       <li>
         <%= link_to destroy_user_session_path, method: :delete do %>
         <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
