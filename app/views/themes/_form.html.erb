@@ -27,11 +27,6 @@
               </div>
         
               <div class="form-group">
-                <%= f.label :project_id %>
-                <%= f.collection_select(:project_id,Project.all,:id,:name,{:prompt=>false},{class:'form-control'}  ) %>
-              </div>
-        
-              <div class="form-group">
           <%= f.button type: 'submit', class: 'btn btn-primary' do %>
             <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
             Salvar

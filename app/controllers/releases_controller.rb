@@ -71,7 +71,7 @@ class ReleasesController < ApplicationController
       @release = Release.where(id: params[:id], project_id: current_project_id).first
 
       if @release.nil?
-        redirect_to releases_url, notice: 'Project not found.'
+        redirect_to releases_url, notice: 'Release not found.'
       end
     end
 

@@ -1,10 +1,13 @@
 class ThemesController < ApplicationController
   before_action :set_theme, only: [:show, :edit, :update, :destroy]
+  before_filter do
+    redirect_to no_project_selected_path unless has_project_selected?
+  end
 
   # GET /themes
   # GET /themes.json
   def index
-    @themes = Theme.all
+    @themes = Theme.where(project_id: current_project_id)
   end
 
   # GET /themes/1
@@ -25,6 +28,7 @@ class ThemesController < ApplicationController
   # POST /themes.json
   def create
     @theme = Theme.new(theme_params)
+    @theme.project_id = current_project_id
 
     respond_to do |format|
       if @theme.save
@@ -64,11 +68,15 @@ class ThemesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_theme
-      @theme = Theme.find(params[:id])
+      @theme = Theme.where(id: params[:id], project_id: current_project_id).first
+
+      if @theme.nil?
+        redirect_to releases_url, notice: 'Theme not found.'
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def theme_params
-      params.require(:theme).permit(:name, :description, :project_id)
+      params.require(:theme).permit(:name, :description)
     end
 end

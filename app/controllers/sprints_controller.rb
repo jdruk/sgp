@@ -7,7 +7,7 @@ class SprintsController < ApplicationController
   # GET /sprints
   # GET /sprints.json
   def index
-    @sprints = Sprint.all
+    @sprints = Sprint.where(project_id: current_project_id)
   end
 
   # GET /sprints/1
@@ -28,6 +28,7 @@ class SprintsController < ApplicationController
   # POST /sprints.json
   def create
     @sprint = Sprint.new(sprint_params)
+    @sprint.project_id = current_project_id
 
     respond_to do |format|
       if @sprint.save
@@ -67,11 +68,15 @@ class SprintsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_sprint
-      @sprint = Sprint.find(params[:id])
+      @sprint = Sprint.where(id: params[:id], project_id: current_project_id).first
+
+      if @sprint.nil?
+        redirect_to releases_url, notice: 'Sprint not found.'
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sprint_params
-      params.require(:sprint).permit(:name,:start_date, :end_date, :planning_start_date, :planning_end_date, :execution_start_date, :execution_end_date, :review_meeting_date, :retrospective_meeting_date, :project_id, :release_id)
+      params.require(:sprint).permit(:name,:start_date, :end_date, :planning_start_date, :planning_end_date, :execution_start_date, :execution_end_date, :review_meeting_date, :retrospective_meeting_date, :release_id)
     end
 end

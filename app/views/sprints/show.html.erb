@@ -11,21 +11,21 @@
       </button>
       <%= link_to "Sprints", sprints_path, class: 'navbar-brand' %>
     </div>
-  
+    
     <!-- links da navbar -->
     <div class="collapse navbar-collapse navbar-submenu-collapse">
       <ul class="nav navbar-nav navbar-right">
         <li>
           <p class="navbar-btn">
-          <%= link_to sprints_path, class: 'btn btn-default' do %>
+            <%= link_to sprints_path, class: 'btn btn-default' do %>
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
             Voltar
-          <% end %>
+            <% end %>
 
-          <%= link_to edit_sprint_path(@sprint), class: 'btn btn-default' do %>
+            <%= link_to edit_sprint_path(@sprint), class: 'btn btn-default' do %>
             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
             Editar
-          <% end %>
+            <% end %>
           </p>
         </li>
       </ul>
@@ -38,51 +38,47 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <p>
+      <p>
         <strong>Name:</strong>
         <%= @sprint.name %>
       </p>
-            <p>
-            <p>
-        <strong>Start date:</strong>
-        <%= @sprint.start_date %>
-      </p>
-            <p>
-        <strong>End date:</strong>
-        <%= @sprint.end_date %>
-      </p>
-            <p>
-        <strong>Planning start date:</strong>
-        <%= @sprint.planning_start_date %>
-      </p>
-            <p>
-        <strong>Planning end date:</strong>
-        <%= @sprint.planning_end_date %>
-      </p>
-            <p>
-        <strong>Execution start date:</strong>
-        <%= @sprint.execution_start_date %>
-      </p>
-            <p>
-        <strong>Execution end date:</strong>
-        <%= @sprint.execution_end_date %>
-      </p>
-            <p>
-        <strong>Review meeting date:</strong>
-        <%= @sprint.review_meeting_date %>
-      </p>
-            <p>
-        <strong>Retrospective meeting date:</strong>
-        <%= @sprint.retrospective_meeting_date %>
-      </p>
-            <p>
-        <strong>Project:</strong>
-        <%= @sprint.project.name %>
-      </p>
-            <p>
-        <strong>Release:</strong>
-        <%= @sprint.release.version unless @sprint.release.nil? %>
-      </p>
-          </div>
+      <p>
+        <p>
+          <strong>Start date:</strong>
+          <%= @sprint.start_date %>
+        </p>
+        <p>
+          <strong>End date:</strong>
+          <%= @sprint.end_date %>
+        </p>
+        <p>
+          <strong>Planning start date:</strong>
+          <%= @sprint.planning_start_date %>
+        </p>
+        <p>
+          <strong>Planning end date:</strong>
+          <%= @sprint.planning_end_date %>
+        </p>
+        <p>
+          <strong>Execution start date:</strong>
+          <%= @sprint.execution_start_date %>
+        </p>
+        <p>
+          <strong>Execution end date:</strong>
+          <%= @sprint.execution_end_date %>
+        </p>
+        <p>
+          <strong>Review meeting date:</strong>
+          <%= @sprint.review_meeting_date %>
+        </p>
+        <p>
+          <strong>Retrospective meeting date:</strong>
+          <%= @sprint.retrospective_meeting_date %>
+        </p>
+        <p>
+          <strong>Release:</strong>
+          <%= @sprint.release.version unless @sprint.release.nil? %>
+        </p>
+      </div>
+    </div>
   </div>
-</div>
