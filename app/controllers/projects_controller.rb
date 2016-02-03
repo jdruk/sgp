@@ -1,5 +1,15 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :select]
+
+  def select
+    session[:project] = @project.id
+    redirect_to projects_path, notice: 'Project selected successfully'
+  end
+
+  def deselect
+    session[:project] = nil
+    redirect_to projects_path, notice: 'Project deselected successfully'
+  end
 
   # GET /projects
   # GET /projects.json
