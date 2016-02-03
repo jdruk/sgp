@@ -1,10 +1,13 @@
 class ReleasesController < ApplicationController
   before_action :set_release, only: [:show, :edit, :update, :destroy]
+  before_filter do
+    redirect_to no_project_selected_path unless has_project_selected?
+  end
 
   # GET /releases
   # GET /releases.json
   def index
-    @releases = Release.all
+    @releases = Release.where(project_id: current_project_id)
   end
 
   # GET /releases/1
@@ -25,6 +28,7 @@ class ReleasesController < ApplicationController
   # POST /releases.json
   def create
     @release = Release.new(release_params)
+    @release.project_id = current_project_id
 
     respond_to do |format|
       if @release.save
@@ -64,11 +68,15 @@ class ReleasesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_release
-      @release = Release.find(params[:id])
+      @release = Release.where(id: params[:id], project_id: current_project_id).first
+
+      if @release.nil?
+        redirect_to releases_url, notice: 'Project not found.'
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def release_params
-      params.require(:release).permit(:version, :deliver_date, :project_id)
+      params.require(:release).permit(:version, :deliver_date)
     end
 end

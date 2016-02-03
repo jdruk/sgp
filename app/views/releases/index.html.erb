@@ -38,20 +38,18 @@
         <table class="table table-hover">
           <thead>
             <tr>
-                            <th>Version</th>
-                            <th>Deliver date</th>
-                            <th>Project</th>
-                            <th style="width: 20%;">Ações</th>
+              <th>Version</th>
+              <th>Deliver date</th>
+              <th style="width: 20%;">Ações</th>
             </tr>
           </thead>
 
           <tbody>
             <% @releases.each do |release| %>
               <tr>
-                                <td><%= release.version %></td>
-                                <td><%= release.deliver_date %></td>
-                                <td><%= release.project.name %></td>
-                                <td>                    
+                <td><%= release.version %></td>
+                <td><%= release.deliver_date %></td>
+                <td>                    
                   <%= link_to release, class: 'btn btn-default', title: 'Exibir' do %>
                   <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                   <% end %>
