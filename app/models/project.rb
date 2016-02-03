@@ -3,6 +3,7 @@ class Project < ActiveRecord::Base
   has_many :themes
   has_many :sprints
   has_many :releases
+  has_many :user_stories
   has_many :function_user_projects
   has_many :functions, through: :function_user_projects
   has_many :users, through: :function_user_projects
