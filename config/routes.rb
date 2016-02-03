@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   # errors controller
   get '/wops/no_project_selected', to: 'errors#no_project_selected', as: 'no_project_selected'
 
+  # normal_user 
+  get '/projects/list', to: 'projects#user_project', as: 'user_project'
+
   #devise_for :users, :controllers  => {
   #           :registrations => 'users/registrations',
   #           :sessions => 'users/sessions'
