@@ -1,10 +1,13 @@
 class UserStoriesController < ApplicationController
   before_action :set_user_story, only: [:show, :edit, :update, :destroy]
+  before_filter do
+    redirect_to no_project_selected_path unless has_project_selected?
+  end
 
   # GET /user_stories
   # GET /user_stories.json
   def index
-    @user_stories = UserStory.all
+    @user_stories = UserStory.where(project_id: current_project_id)
   end
 
   # GET /user_stories/1
@@ -25,6 +28,7 @@ class UserStoriesController < ApplicationController
   # POST /user_stories.json
   def create
     @user_story = UserStory.new(user_story_params)
+    @user_story.project_id = current_project_id
 
     respond_to do |format|
       if @user_story.save
@@ -64,7 +68,11 @@ class UserStoriesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user_story
-      @user_story = UserStory.find(params[:id])
+      @user_story = UserStory.where(id: params[:id], project_id: current_project_id).first
+
+      if @user_story.nil?
+        redirect_to releases_url, notice: 'User story not found.'
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

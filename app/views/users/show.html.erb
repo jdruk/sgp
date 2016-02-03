@@ -11,21 +11,21 @@
       </button>
       <%= link_to "Users", users_path, class: 'navbar-brand' %>
     </div>
-  
+    
     <!-- links da navbar -->
     <div class="collapse navbar-collapse navbar-submenu-collapse">
       <ul class="nav navbar-nav navbar-right">
         <li>
           <p class="navbar-btn">
-          <%= link_to users_path, class: 'btn btn-default' do %>
+            <%= link_to users_path, class: 'btn btn-default' do %>
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
             Voltar
-          <% end %>
+            <% end %>
 
-          <%= link_to edit_user_path(@user), class: 'btn btn-default' do %>
+            <%= link_to edit_user_path(@user), class: 'btn btn-default' do %>
             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
             Editar
-          <% end %>
+            <% end %>
           </p>
         </li>
       </ul>
@@ -38,26 +38,26 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <p>
+      <p>
         <strong>Email:</strong>
         <%= @user.email %>
       </p>
-            <p>
+      <p>
         <strong>Name:</strong>
         <%= @user.name %>
       </p>
-            <p>
+      <p>
         <strong>Schedule:</strong>
         <%= @user.schedule %>
       </p>
-            <p>
+      <p>
         <strong>Group:</strong>
         <%= @user.group %>
       </p>
-            <p>
+      <p>
         <strong>Local:</strong>
-        <%= @user.local %>
+        <%= @user.local.name unless @user.local.nil? %>
       </p>
-          </div>
+    </div>
   </div>
 </div>

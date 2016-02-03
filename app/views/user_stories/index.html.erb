@@ -38,26 +38,26 @@
         <table class="table table-hover">
           <thead>
             <tr>
-                            <th>Description</th>
-                            <th>Business value</th>
-                            <th>Story points</th>
-                            <th>Status</th>
-                            <th>Theme</th>
-                            <th>Sprint</th>
-                            <th style="width: 20%;">Ações</th>
+              <th>Description</th>
+              <th>Business value</th>
+              <th>Story points</th>
+              <th>Status</th>
+              <th>Theme</th>
+              <th>Sprint</th>
+              <th style="width: 20%;">Ações</th>
             </tr>
           </thead>
 
           <tbody>
             <% @user_stories.each do |user_story| %>
               <tr>
-                                <td><%= user_story.description %></td>
-                                <td><%= user_story.business_value %></td>
-                                <td><%= user_story.story_points %></td>
-                                <td><%= user_story.status %></td>
-                                <td><%= user_story.theme.name %></td>
-                                <td><%= user_story.sprint.name unless user_story.sprint.nil? %></td>
-                                <td>                    
+                <td><%= user_story.description %></td>
+                <td><%= user_story.business_value %></td>
+                <td><%= user_story.story_points %></td>
+                <td><%= user_story.status %></td>
+                <td><%= user_story.theme.name unless user_story.theme.nil? %></td>
+                <td><%= user_story.sprint.name unless user_story.sprint.nil? %></td>
+                <td>
                   <%= link_to user_story, class: 'btn btn-default', title: 'Exibir' do %>
                   <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                   <% end %>
