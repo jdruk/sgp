@@ -34,6 +34,11 @@ Rails.application.routes.draw do
   resources :abilities
   resources :locals
   resources :languages
+
+  #devise_for :users
+  #  scope "/users" do
+  #    resources :users
+  #end
   devise_for :users
   resources :users
   resources :function_user_projects

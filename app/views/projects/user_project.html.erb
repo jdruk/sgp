@@ -1,55 +1,45 @@
-<tbody>
+<!-- TABLE -->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Size</th>
+              <th>Start date</th>
+              <th>End date</th>
+              <th>Local</th>
+              <th style="width: 20%;">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
             <% @projects.each do |project| %>
-              <tr>
-                <td><%= project.name %></td>
-                <td><%= project.size %></td>
-                <td><%= project.start_date %></td>
-                <td><%= project.end_date %></td>
-                <td><%= project.local.name unless project.local.nil? %></td>
-                <td>
-                  <% if current_project_id == project.id %>
-                    <%= link_to select_project_path(project.id), class: 'btn btn-success', title: 'Select project' do %>
-                    <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
-                    <% end %>
-                  <% else %>
-                    <%= link_to select_project_path(project.id), class: 'btn btn-default', title: 'Select project' do %>
-                    <span class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>
-                    <% end %>
-                  <% end %>
-
-                  <%= link_to project, class: 'btn btn-default', title: 'Exibir' do %>
-                  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                  <% end %>
-
-                  <%= link_to edit_project_path(project), class: 'btn btn-default', title: 'Editar' do %>
-                  <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                  <% end %>
-
-                  <%= link_to "#modal-id-#{project.id}", class: 'btn btn-default', title: 'Remover', 'data-toggle': 'modal' do %>
-                  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                  <% end %>
-                </td>
-              </tr>
-              <!-- MODAL -->
-              <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
-                <div class="modal fade" id="modal-id-<%= project.id %>">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title">Alerta!</h4>
-                      </div>
-                      <div class="modal-body">
-                        <p>Deseja realmente remover <strong><%= project.name %></strong>?</p>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                        <%= link_to 'Remover', project, method: :delete, class: 'btn btn-danger' %>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- /MODAL -->
+            <tr>
+              <td><%= project.name %></td>
+              <td><%= project.size %></td>
+              <td><%= project.start_date %></td>
+              <td><%= project.end_date %></td>
+              <td><%= project.local.name unless project.local.nil? %></td>
+              <td>
+                <% if current_project_id == project.id %>
+                <%= link_to select_project_path(project.id), class: 'btn btn-success', title: 'Select project' do %>
+                <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+                <% end %>
+                <% else %>
+                <%= link_to select_project_path(project.id), class: 'btn btn-default', title: 'Select project' do %>
+                <span class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>
+                <% end %>
+                  
+              </td>
+            </tr>
             <% end %>
           </tbody>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- TABLE -->
