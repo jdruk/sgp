@@ -1,5 +1,8 @@
 class UserStoryAcceptanceCriterionsController < ApplicationController
   before_action :set_user_story_acceptance_criterion, only: [:show, :edit, :update, :destroy]
+  before_filter do
+    redirect_to no_project_selected_path unless has_project_selected?
+  end
 
   # GET /user_story_acceptance_criterions
   # GET /user_story_acceptance_criterions.json

@@ -28,7 +28,7 @@
         
               <div class="form-group">
                 <%= f.label :user_story_id %>
-                <%= f.collection_select(:user_story_id,UserStory.all,:id,:description,{:prompt=>false},{class:'form-control'}) %>
+                <%= f.collection_select(:user_story_id, current_project.user_stories,:id,:description,{:prompt=>false},{class:'form-control'}) %>
               </div>
         
               <div class="form-group">
