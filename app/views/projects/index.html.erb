@@ -108,3 +108,24 @@
   </div>
 </div>
 <!-- /TABLE -->
+
+<div class="container">
+  <div class="row">
+    <% @projects.each do |project| %>
+    <button class="btn btn-lg btn-default btn-project" onclick="window.location.href='<%= project_path(project) %>'">
+      <p class="title"><%= project.name %></p>
+      <hr>
+      <div class="col-xs-6 col-sd-6 col-md-6 col-lg-6">
+        <p class="info">Iniciado em: <%= project.start_date %></p>
+        <p class="info">Termino previsto: <%= project.end_date %></p>
+        <p class="info">Membros: <%= project.members_number %></p>
+      </div>
+
+      <div class="col-xs-6 col-sd-6 col-md-6 col-lg-6">
+        <p class="info">Sprint atual: <%= project.current_sprint %></p>
+        <p class="info">Termino previsto: <%= project.end_date %></p>
+      </div>
+    </button>
+    <% end %>
+  </div>
+</div>

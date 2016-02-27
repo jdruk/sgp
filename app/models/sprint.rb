@@ -13,6 +13,11 @@ class Sprint < ActiveRecord::Base
   validates :review_meeting_date, presence: true
   validates :project_id, presence: true
 
+  before_save do |project|
+    project.start_date = project.start_date.beginning_of_day
+    project.end_date = project.end_date.end_of_day
+  end
+
 end
 
 

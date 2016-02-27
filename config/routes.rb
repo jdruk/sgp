@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   #root to: redirect('/users/sign_in')
-  root to: 'static#index'
+  root to: 'static#home_page'
   
   get '/dashboard', to: 'dashboard#index', as: 'dashboard'
 

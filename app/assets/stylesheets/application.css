@@ -14,3 +14,14 @@
  *= require_self
  */
 body{ padding-top: 50px; }
+
+/* button project */
+.btn-project p.title {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.btn-project p.info {
+  font-size: 0.8em;
+  text-align: left;
+}

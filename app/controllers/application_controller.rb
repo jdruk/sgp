@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 	protect_from_forgery
 	protect_from_forgery with: :exception
 
-	before_action :authenticate_user!
+	before_action :authenticate_user!, except: [:home_page]
 
 	rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
@@ -15,6 +15,6 @@ class ApplicationController < ActionController::Base
 		policy_name = exception.policy.class.to_s.underscore
 
 		flash[:error] = t "#{policy_name}.#{exception.query}", scope: "pundit", default: :default
-		redirect_to( root_path)
+		redirect_to(root_path)
 	end
 end
