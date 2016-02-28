@@ -55,29 +55,29 @@
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <p>
-        <strong>Name:</strong>
+        <strong><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Projeto:</strong>
         <%= @project.name %>
       </p>
       <p>
-        <strong>Size:</strong>
-        <%= @project.size %>
+        <strong><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Size:</strong>
+        <%= @project.size %> Story points
       </p>
       <p>
-        <strong>Start date:</strong>
+        <strong><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Start date:</strong>
         <%= l @project.start_date %>
       </p>
       <p>
-        <strong>End date:</strong>
+        <strong><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> End date:</strong>
         <%= l @project.end_date %>
       </p>
       <p>
-        <strong>Local:</strong>
+        <strong><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Local:</strong>
         <%= @project.local.name unless @project.local.nil? %>
       </p>
 
       <div class="progress">
         <div class="progress-bar progress-bar-default" style="width: <%= @project.progress %>%">
-          <%= @project.progress %>%
+          <%= @project.progress %>% completo
         </div>
       </div>
     </div>
@@ -104,4 +104,81 @@
     </div>
   </div>
 </div>
-<!-- /MODAL
+<!-- /MODAL -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sd-12 col-md-12 col-lg-3">
+      <button class="btn btn-lg btn-default btn-project" onclick="window.location.href='<%= user_stories_path %>'">
+        <p>
+          <span class="glyphicon glyphicon-th" aria-hidden="true"></span>
+          Product backlog
+        </p>
+      </button>
+    </div>
+
+    <div class="col-xs-12 col-sd-12 col-md-12 col-lg-3">
+      <button class="btn btn-lg btn-default btn-project" onclick="window.location.href='<%= sprints_path %>'">
+        <p>
+          <span class="glyphicon glyphicon-th" aria-hidden="true"></span>
+          Sprints
+        </p>
+      </button>
+    </div>
+
+    <div class="col-xs-12 col-sd-12 col-md-12 col-lg-3">
+      <button class="btn btn-lg btn-default btn-project" onclick="window.location.href='<%= releases_path %>'">
+        <p>
+          <span class="glyphicon glyphicon-th" aria-hidden="true"></span>
+          Releases
+        </p>
+      </button>
+    </div>
+
+    <div class="col-xs-12 col-sd-12 col-md-12 col-lg-3">
+      <button class="btn btn-lg btn-default btn-project" onclick="window.location.href='<%= function_user_projects_path %>'">
+        <p>
+          <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+          Membros
+        </p>
+      </button>
+    </div>
+
+    <div class="col-xs-12 col-sd-12 col-md-12 col-lg-3">
+      <button class="btn btn-lg btn-default btn-project" onclick="window.location.href='<%= themes_path %>'">
+        <p>
+          <span class="glyphicon glyphicon-th" aria-hidden="true"></span>
+          Temas
+        </p>
+      </button>
+    </div>
+
+    <div class="col-xs-12 col-sd-12 col-md-12 col-lg-3">
+      <button class="btn btn-lg btn-default btn-project" onclick="window.location.href='<%= user_story_acceptance_criterions_path %>'">
+        <p>
+          <span class="glyphicon glyphicon-th" aria-hidden="true"></span>
+          Critérios de aceitação
+        </p>
+      </button>
+    </div>
+
+    <div class="col-xs-12 col-sd-12 col-md-12 col-lg-3">
+      <button class="btn btn-lg btn-default btn-project" onclick="window.location.href='<%= tasks_path %>'">
+        <p>
+          <span class="glyphicon glyphicon-th" aria-hidden="true"></span>
+          Tarefas
+        </p>
+      </button>
+    </div>
+
+    <div class="col-xs-12 col-sd-12 col-md-12 col-lg-3">
+      <button class="btn btn-lg btn-default btn-project" onclick="window.location.href='<%= task_requirements_path %>'">
+        <p>
+          <span class="glyphicon glyphicon-th" aria-hidden="true"></span>
+          Habilidades requeridas da tarefa
+        </p>
+      </button>
+    </div>
+
+  </div>
+</div>
