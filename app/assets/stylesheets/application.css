@@ -25,3 +25,8 @@ body{ padding-top: 50px; }
   font-size: 0.8em;
   text-align: left;
 }
+
+.container-project {
+  width: 100%;
+  margin-bottom: 1em;
+}

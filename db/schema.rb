@@ -60,8 +60,8 @@ ActiveRecord::Schema.define(version: 20160203214306) do
   create_table "projects", force: :cascade do |t|
     t.string   "name"
     t.integer  "size"
-    t.date     "start_date"
-    t.date     "end_date"
+    t.datetime "start_date"
+    t.datetime "end_date"
     t.integer  "local_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -80,14 +80,14 @@ ActiveRecord::Schema.define(version: 20160203214306) do
   add_index "releases", ["project_id"], name: "index_releases_on_project_id"
 
   create_table "sprints", force: :cascade do |t|
-    t.date     "start_date"
-    t.date     "end_date"
-    t.date     "planning_start_date"
-    t.date     "planning_end_date"
-    t.date     "execution_start_date"
-    t.date     "execution_end_date"
-    t.date     "review_meeting_date"
-    t.date     "retrospective_meeting_date"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.datetime "planning_start_date"
+    t.datetime "planning_end_date"
+    t.datetime "execution_start_date"
+    t.datetime "execution_end_date"
+    t.datetime "review_meeting_date"
+    t.datetime "retrospective_meeting_date"
     t.integer  "project_id"
     t.integer  "release_id"
     t.datetime "created_at",                 null: false

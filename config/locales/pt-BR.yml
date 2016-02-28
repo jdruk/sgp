@@ -1,0 +1,9 @@
+pt-BR:
+  hello: "Hello world"
+  lang: "pt-BR"
+  date:
+    formats:
+      default: "%d/%m/%y"
+  time:
+    formats:
+      default: "%d/%m/%Y"

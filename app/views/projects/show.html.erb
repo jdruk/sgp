@@ -26,6 +26,11 @@
             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
             Editar
           <% end %>
+
+          <%= link_to "#modal-remove", class: 'btn btn-default', 'data-toggle': 'modal' do %>
+          <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+          Excluír
+          <% end %>
           </p>
         </li>
       </ul>
@@ -35,29 +40,68 @@
 </nav>
 <!-- /NAVBAR -->
 
+<!-- BREADCRUMB -->
+<div class="container">
+  <div class="row">
+    <ol class="breadcrumb">
+      <li><%= link_to "Projetos", projects_path %></li>
+      <li class="active"><%= @project.name %></li>
+    </ol>
+  </div>
+</div>
+<!-- /BREADCRUMB -->
+
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <p>
+      <p>
         <strong>Name:</strong>
         <%= @project.name %>
       </p>
-            <p>
+      <p>
         <strong>Size:</strong>
         <%= @project.size %>
       </p>
-            <p>
+      <p>
         <strong>Start date:</strong>
-        <%= @project.start_date %>
+        <%= l @project.start_date %>
       </p>
-            <p>
+      <p>
         <strong>End date:</strong>
-        <%= @project.end_date %>
+        <%= l @project.end_date %>
       </p>
-            <p>
+      <p>
         <strong>Local:</strong>
         <%= @project.local.name unless @project.local.nil? %>
       </p>
+
+      <div class="progress">
+        <div class="progress-bar progress-bar-default" style="width: <%= @project.progress %>%">
+          <%= @project.progress %>%
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+<!-- MODAL -->
+<div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+  <div class="modal fade" id="modal-remove">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Alerta!</h4>
+        </div>
+        <div class="modal-body">
+          <p>Deseja realmente remover o projeto: <strong><%= @project.name %></strong>?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+          <%= link_to 'Remover', @project, method: :delete, class: 'btn btn-danger' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /MODAL

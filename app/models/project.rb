@@ -9,9 +9,6 @@ class Project < ActiveRecord::Base
   has_many :users, through: :function_user_projects
 
   validates :name, presence: true
-  validates :size, presence: true
-  validates :start_date, presence: true
-  validates :end_date, presence: true
 
   before_save do |project|
     project.start_date = project.start_date.beginning_of_day
@@ -36,6 +33,21 @@ class Project < ActiveRecord::Base
       return nil
     else
       return current.name
+    end
+  end
+
+  def size
+    self.user_stories.sum(:story_points)
+  end
+
+  def progress
+    count = self.user_stories.count
+    done = self.user_stories.where(status: 4).count
+
+    if count > 0
+      return done * 100 / count
+    else
+      return 0
     end
   end
 end

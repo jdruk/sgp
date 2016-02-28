@@ -1,5 +1,5 @@
 class UserStory < ActiveRecord::Base
-  enum status: [:pendent,:development,:completed,:test]
+  #enum status: {pendent: 1, development: 2, test: 3, completed: 4}
 
   belongs_to :theme
   belongs_to :sprint
@@ -8,9 +8,5 @@ class UserStory < ActiveRecord::Base
   has_many :tasks
   
   validates :description, presence: true
-  validates :business_value, presence: true
-  validates :story_points, presence: true
-  validates :status, presence: true
-  validates :theme_id, presence: true
 
 end

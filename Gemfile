@@ -19,3 +19,4 @@ end
 
 gem 'devise'
 gem 'thin'
+gem 'rails-i18n'
