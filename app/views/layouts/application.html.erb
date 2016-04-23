@@ -72,7 +72,37 @@
   <% end %>
   <!-- /DEVISE ALERT -->
 
-  <%= yield %>
+<% if user_signed_in? && current_user.group != 'admin' %>
+<!-- SIDEBAR -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
 
+      <div class="placeholder text-center">
+        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+        <h4><%= current_user.name %></h4>
+      </div>
+
+      <div class="progress">
+        <div class="progress-bar progress-bar-xp" style="width: 57%;">
+        </div>
+      </div>
+
+      <h4>Hello</h4>
+      <div class="progress">
+        <div class="progress-bar progress-bar-default" style="width: 57%;">
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <%= yield %>
+    </div>
+  </div>
+</div>
+<!-- /SIDEBAR -->
+<% else %>
+  <%= yield %>
+<% end %>
 </body>
 </html>

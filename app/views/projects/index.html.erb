@@ -1,63 +1,37 @@
-<!-- NAVBAR -->
-<nav class="navbar navbar-default" role="navigation">
-  <div class="container">
-    <!-- agrupar para mobile -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-submenu-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <%= link_to "Projects", projects_path, class: 'navbar-brand' %>
+<% if current_user.group == 'admin' %>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+      <!-- agrupar para mobile -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-submenu-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <%= link_to "Projects", projects_path, class: 'navbar-brand' %>
+      </div>
+    
+      <!-- links da navbar -->
+      <div class="collapse navbar-collapse navbar-submenu-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <p class="navbar-btn">
+            <%= link_to new_project_path, class: 'btn btn-default' do %>
+              <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+              Novo
+            <% end %>
+            </p>
+          </li>
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
     </div>
-  
-    <!-- links da navbar -->
-    <div class="collapse navbar-collapse navbar-submenu-collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-          <p class="navbar-btn">
-          <%= link_to new_project_path, class: 'btn btn-default' do %>
-            <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
-            Novo
-          <% end %>
-          </p>
-        </li>
-      </ul>
-    </div>
-    <!-- /.navbar-collapse -->
-  </div>
-</nav>
-<!-- /NAVBAR -->
+  </nav>
+  <!-- /NAVBAR -->
 
-<div class="container">
-  <div class="row">
-    <% @projects.each do |project| %>
-    <div class="col-xs-12 col-sd-12 col-md-12 col-lg-6">
-      <button class="btn btn-lg btn-default btn-project container-project" onclick="window.location.href='<%= select_project_path(project) %>'">
-        <div class="col-xs-12 col-sd-12 col-md-12 col-lg-12">
-          <p class="title"><%= project.name %></p>
-          <hr>
-        </div>
-        <div class="col-xs-12 col-sd-12 col-md-12 col-lg-6">
-          <p class="info"><strong>Iniciado em:</strong> <%= l project.start_date %></p>
-          <p class="info"><strong>Termino previsto:</strong> <%= l project.end_date %></p>
-          <p class="info"><strong>Membros:</strong> <%= project.members_number %></p>
-        </div>
-
-        <div class="col-xs-12 col-sd-12 col-md-12 col-lg-6">
-          <p class="info"><strong>Sprint atual:</strong> <%= project.current_sprint %></p>
-        </div>
-
-        <div class="col-xs-12 col-sd-12 col-md-12 col-lg-12">
-          <div class="progress">
-            <div class="progress-bar progress-bar-default" style="width: <%= project.progress %>%">
-              <%= project.progress %>% completo
-            </div>
-          </div>
-        </div>
-      </button>
-    </div>
-    <% end %>
-  </div>
-</div>
+  <%= render 'projects/list_projects_admin' %>
+<% else %>
+  <%= render 'projects/list_projects_default' %>
+<% end %>

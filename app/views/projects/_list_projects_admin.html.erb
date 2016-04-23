@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <% @projects.each do |project| %>
+    <div class="col-xs-12 col-sd-12 col-md-12 col-lg-12">
+      <button class="btn btn-lg btn-default btn-project container-project" onclick="window.location.href='<%= select_project_path(project) %>'">
+      <div class="col-xs-12 col-sd-12 col-md-6 col-lg-4">
+        <p class="info middle"><strong><%= project.name %></strong></p>
+      </div>
+
+      <div class="col-xs-12 col-sd-12 col-md-3 col-lg-3">
+        <p class="info middle"><strong>Iniciado em:</strong> <%= l project.start_date %></p>
+      </div>
+
+      <div class="col-xs-12 col-sd-12 col-md-3 col-lg-3">
+        <p class="info middle"><strong>Termino previsto:</strong> <%= l project.end_date %></p>
+      </div>
+
+      <div class="col-xs-12 col-sd-12 col-md-12 col-lg-2">
+        <p class="info"><strong>Progresso:</strong></p>
+        <div class="progress">
+          <div class="progress-bar progress-bar-default" style="width: <%= project.progress %>%">
+          </div>
+        </div>
+      </div>
+      </button>
+    </div>
+    <% end %>
+  </div>
+</div>

@@ -38,7 +38,17 @@
 
       <div class="form-group">
         <%= f.label :theme_id %>
-        <%= f.collection_select( :theme_id,Theme.all,:id,:name, {:prompt=>false},{class:'form-control'} ) %>
+        <% sprints = current_project.themes.map {|sprint| [sprint.name, sprint.id] }; sprints << ['Novo tema...', 'new'] %>
+        <div id="theme_list">
+          <%= f.select(:theme_id, sprints, {:prompt => false}, {class: 'form-control'} ) %>
+        </div>
+
+        <div id="new_theme" class="hidden">
+          <%= f.text_field :theme_id, class: 'form-control new_theme' %>
+          <button class="btn btn-default" id="btn-list-themes">
+            <span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>
+          </button>
+        </div>
       </div>
 
       <div class="form-group">
@@ -56,3 +66,22 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  $(function(){
+    $('#user_story_theme_id').change(function(){
+      if($('#user_story_theme_id').val() == 'new')
+      {
+        $("#new_theme").attr("class","");
+        $("#theme_list").attr("class","hidden");
+      }
+    });
+
+    $("#btn-list-themes").click(function(){
+      $("#new_theme").attr("class","hidden");
+      $(".new_theme").val("");
+      $("#theme_list").attr("class","");
+      return false;
+    });
+  });
+</script>

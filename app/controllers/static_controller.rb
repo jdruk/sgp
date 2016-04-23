@@ -1,5 +1,5 @@
 class StaticController < ApplicationController
-  before_action :go_to_home, only: [:index]
+  before_action :go_to_home, only: [:home_page]
 
   def home_page
     render 'static/index'
@@ -7,6 +7,12 @@ class StaticController < ApplicationController
 
   private
     def go_to_home
-        redirect_to dashboard_path if user_signed_in?
+      if user_signed_in?
+        if current_user.group == 'admin'
+          redirect_to projects_path
+        else
+          redirect_to dashboard_path
+        end
+      end
     end
 end

@@ -3,6 +3,5 @@ class Theme < ActiveRecord::Base
   has_many :user_stories
 
   validates :name, presence: true
-  validates :description, presence: true
   validates :project_id, presence: true
 end
