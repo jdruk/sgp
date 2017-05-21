@@ -1,39 +1,33 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="margin-top: 2em;">
-      <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 class="panel-title">Entrar</h3>
-          </div>
-          <div class="panel-body">
-            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-              <div class="form-group">
-                <%= f.label :email %>
-                <%= f.email_field :email, autofocus: true, class: 'form-control' %>
-              </div>
-
-              <div class="form-group">
-                <%= f.label :password %>
-                <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
-              </div>
-
-              <% if devise_mapping.rememberable? -%>
-                <div class="form-group">
-                  <%= f.check_box :remember_me %>
-                  <%= f.label :remember_me %>
-                </div>
-              <% end -%>
-
-              <div class="form-group">
-                <%= f.submit "Entrar", class: 'btn btn-primary' %>
-              </div>
-
-              <div class="form-group">
-                <%= render "users/shared/links" %>
-              </div>
-            <% end %>
-          </div>
+<div class="ui centered grid container">
+  <div class="five wide column">
+    <h2>Entrar</h2>
+    <hr>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'ui form'}) do |f| %>
+      <div class="field">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true %>
       </div>
-    </div>
+
+      <div class="field">
+        <%= f.label :password %>
+        <%= f.password_field :password, autocomplete: "off" %>
+      </div>
+
+      <% if devise_mapping.rememberable? -%>
+        <div class="inline field">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+      <% end -%>
+
+      <div class="actions">
+        <%= f.submit "Entrar", class: 'ui button teal' %>
+      </div>
+    <% end %>
+
+    <p></p>
+    <p></p>
+    <p></p>
+    <%# render "users/shared/links" %>
   </div>
 </div>

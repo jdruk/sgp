@@ -1,0 +1,42 @@
+<!-- side left menu -->
+<div class="ui vertical inverted left visible sidebar menu overlay labeled icon">
+  <%= link_to root_path, class: "#{is_current_page?(dashboard_path)} item" do %>
+  <i class="home icon"></i>
+  Inicio
+  <% end %>
+
+  <%= link_to disorder_groups_path, class: "#{is_current_page?(disorder_groups_path)} item" do %>
+  <i class="sitemap icon"></i>
+  Grupos de transtornos
+  <% end %>
+
+  <%= link_to disorders_path, class: "#{is_current_page?(disorders_path)} item" do %>
+  <i class="heartbeat outline icon"></i>
+  Transtornos
+  <% end %>
+  
+  <%= link_to genders_path, class: "#{is_current_page?(genders_path)} item" do %>
+  <i class="heterosexual icon"></i>
+  Gêneros
+  <% end %>
+
+  <%= link_to age_groups_path, class: "#{is_current_page?(age_groups_path)} item" do %>
+  <i class="calendar icon"></i>
+  Faixas etárias
+  <% end %>
+  
+  <%= link_to testimonies_path, class: "#{is_current_page?(testimonies_path)} item" do %>
+  <i class="book icon"></i>
+  Depoimentos
+  <% end %>
+
+  <%= link_to videos_path, class: "#{is_current_page?(videos_path)} item" do %>
+  <i class="film icon"></i>
+  Vídeos
+  <% end %>
+
+  <%= link_to svm_path, class: "#{is_current_page?(videos_path)} item" do %>
+  <i class="rocket icon"></i>
+  Testar SVM
+  <% end %>
+</div>

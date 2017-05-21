@@ -1,0 +1,18 @@
+<!-- side left menu -->
+<div class="ui vertical inverted left visible sidebar menu overlay labeled icon">
+  <%= link_to root_path, class: "#{is_current_page?(dashboard_path)} item" do %>
+  <i class="home icon"></i>
+  Inicio
+  <% end %>
+
+  <%= link_to feed_testimonies_path, class: "#{is_current_page?(feed_testimonies_path)} item" do %>
+  <i class="feed icon"></i>
+  Depoimentos
+  <% end %>
+
+  <%= link_to testimonies_path, class: "#{is_current_page?(testimonies_path)} item" do %>
+  <i class="users icon"></i>
+  Meus depoimentos
+  <% end %>
+
+</div>

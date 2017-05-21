@@ -1,0 +1,33 @@
+<!-- side left menu -->
+<div class="ui vertical inverted left visible sidebar menu overlay labeled icon">
+  <%= link_to root_path, class: "#{is_current_page?(dashboard_path)} item" do %>
+  <i class="home icon"></i>
+  Inicio
+  <% end %>
+
+  <%= link_to feed_testimonies_path, class: "#{is_current_page?(feed_testimonies_path)} item" do %>
+  <i class="feed icon"></i>
+  Depoimentos
+  <% end %>
+
+  <%= link_to users_path, class: "#{is_current_page?(users_path)} item" do %>
+  <i class="users icon"></i>
+  Meus Pacientes
+  <% end %>
+
+  <%= link_to diagnoses_path, class: "#{is_current_page?(diagnoses_path)} item" do %>
+  <i class="book icon"></i>
+  Diagnósticos
+  <% end %>
+
+  <%= link_to testimonies_path, class: "#{is_current_page?(testimonies_path)} item" do %>
+  <i class="book icon"></i>
+  Depoimentos dos meus pacientes
+  <% end %>
+
+  <%= link_to expertises_path, class: "#{is_current_page?(expertises_path)} item" do %>
+  <i class="doctor icon"></i>
+  Minhas especialidades médicas
+  <% end %>
+
+</div>

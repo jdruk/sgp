@@ -1,108 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-  <title>Sistema de gerênciamento de projetos</title>
+  <meta charset="utf-8" />
+  <title>Sistema de Gerênciamento de Projetos</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 </head>
 <body>
 
-<!-- NAVBAR -->
-  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
-      <!-- agrupar para mobile -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-          <%= link_to "SGP", root_path, class: 'navbar-brand' %>
-      </div>
-    
-      <!-- links da navbar -->
-      <div class="collapse navbar-collapse navbar-ex1-collapse">
-        <%= render 'layouts/navbar_default' if !user_signed_in? %>
-        <%= render 'layouts/navbar_user' if user_signed_in? %>
-      </div><!-- /.navbar-collapse -->
-    </div>
-  </nav>
-  <!-- NAVBAR -->
-
-  <!-- DEVISE ALERT -->
-  <% if notice %>
-    <div class="alert alert-info">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <p><%= notice %></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  <% end %>
-
-  <% if alert %>
-    <div class="alert alert-danger">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <p><%= alert %></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  <% end %>
-
-  <% if flash[:success] %>
-    <div class="alert alert-success">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <p><%= flash[:success] %></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  <% end %>
-  <!-- /DEVISE ALERT -->
-
-<% if user_signed_in? && current_user.group != 'admin' %>
-<!-- SIDEBAR -->
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-3 col-md-2 sidebar">
-
-      <div class="placeholder text-center">
-        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-        <h4><%= current_user.name %></h4>
-      </div>
-
-      <div class="progress">
-        <div class="progress-bar progress-bar-xp" style="width: 57%;">
-        </div>
-      </div>
-
-      <h4>Hello</h4>
-      <div class="progress">
-        <div class="progress-bar progress-bar-default" style="width: 57%;">
-        </div>
-      </div>
-    </div>
-
-    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-      <%= yield %>
-    </div>
-  </div>
-</div>
-<!-- /SIDEBAR -->
-<% else %>
+<% if !user_signed_in? %>
+  <%= render 'layouts/default_top_menu_bar' %>
   <%= yield %>
+  <%= render 'layouts/footer' %>
+<% else %>
+  <%= render 'layouts/user_top_menu_bar' %>
+  <%= render 'layouts/admin_side_bar' if current_user.group == 'admin' %>
+  <%= render 'layouts/user_side_bar' if current_user.group != 'admin' %>
+
+  <!-- content -->
+  <div class="pusher main-pusher">
+    <%= render 'layouts/alert_messages' %>  
+    <%= yield %>
+  </div>
 <% end %>
+
 </body>
 </html>
+
+<script>
+$(document).ready(function() {
+    // create sidebar and attach to menu open
+    $('.ui.sidebar').sidebar('attach events', '.toc.item');
+    $('.ui.dropdown').dropdown();
+    $('.message .close').on('click', function() {
+      $(this)
+        .closest('.message')
+        .transition('fade');
+    });
+  });
+</script>
