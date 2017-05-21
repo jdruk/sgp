@@ -1,96 +1,51 @@
-<!-- NAVBAR -->
-<nav class="navbar navbar-default" role="navigation">
-  <div class="container">
-    <!-- agrupar para mobile -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-submenu-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <%= link_to "Sprints", sprints_path, class: 'navbar-brand' %>
-    </div>
-  
-    <!-- links da navbar -->
-    <div class="collapse navbar-collapse navbar-submenu-collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-          <p class="navbar-btn">
-          <%= link_to new_sprint_path, class: 'btn btn-default' do %>
-            <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
-            Novo
-          <% end %>
-          </p>
-        </li>
-      </ul>
-    </div>
-    <!-- /.navbar-collapse -->
-  </div>
-</nav>
-<!-- /NAVBAR -->
+<p></p>
 
-<!-- TABLE -->
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <div class="table-responsive">
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Start date</th>
-              <th>End date</th>
-              <th>Release</th>
-              <th style="width: 20%;">Ações</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <% @sprints.each do |sprint| %>
-              <tr>
-                <td><%= sprint.name %></td>
-                <td><%= sprint.start_date %></td>
-                <td><%= sprint.end_date %></td>
-                <td><%= sprint.release.version unless sprint.release.nil? %></td>
-                <td>
-                  <%= link_to sprint, class: 'btn btn-default', title: 'Exibir' do %>
-                  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                  <% end %>
-                  <%= link_to edit_sprint_path(sprint), class: 'btn btn-default', title: 'Editar' do %>
-                  <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                  <% end %>
-                  <%= link_to "#modal-id-#{sprint.id}", class: 'btn btn-default', title: 'Remover', 'data-toggle': 'modal' do %>
-                  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                  <% end %>
-                </td>
-              </tr>
-              <!-- MODAL -->
-              <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
-                <div class="modal fade" id="modal-id-<%= sprint.id %>">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title">Alerta!</h4>
-                      </div>
-                      <div class="modal-body">
-                        <p>Deseja realmente remover <strong><%= sprint.start_date %></strong>?</p>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                        <%= link_to 'Remover', sprint, method: :delete, class: 'btn btn-danger' %>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- /MODAL -->
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-    </div>
+<div class="ui container">
+  <div class="ui menu"">
+    <a href="#" class="item active"><strong>Sprints</strong></a>
+    <%= link_to "Novo", new_sprint_path, class: 'item' %>
   </div>
+
+  <%= render 'sprints/breadcrumb' %>
+
+  <table class="ui celled table">
+    <thead>
+      <tr>
+                <th>Start date</th>
+                <th>End date</th>
+                <th>Planning start date</th>
+                <th>Planning end date</th>
+                <th>Execution start date</th>
+                <th>Execution end date</th>
+                <th>Review meeting date</th>
+                <th>Retrospective meeting date</th>
+                <th>Release</th>
+                <th width="250">Ações</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @sprints.each do |sprint| %>
+        <tr>
+                    <td><%= sprint.start_date %></td>
+                    <td><%= sprint.end_date %></td>
+                    <td><%= sprint.planning_start_date %></td>
+                    <td><%= sprint.planning_end_date %></td>
+                    <td><%= sprint.execution_start_date %></td>
+                    <td><%= sprint.execution_end_date %></td>
+                    <td><%= sprint.review_meeting_date %></td>
+                    <td><%= sprint.retrospective_meeting_date %></td>
+                    <td><%= sprint.release_id %></td>
+                    <td>
+            <div class="ui buttons">
+            <%= link_to 'Exibir', sprint, class: 'ui blue basic button' %>
+            <%= link_to 'Editar', edit_sprint_path(sprint), class: 'ui blue basic button' %>
+            <%= link_to 'Remover', sprint, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'ui red basic button' %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
 </div>
-<!-- /TABLE -->

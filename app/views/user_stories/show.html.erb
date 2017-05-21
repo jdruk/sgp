@@ -1,100 +1,36 @@
-<!-- NAVBAR -->
-<nav class="navbar navbar-default" role="navigation">
-  <div class="container">
-    <!-- agrupar para mobile -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-submenu-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <%= link_to "User Stories", user_stories_path, class: 'navbar-brand' %>
-    </div>
+<p></p>
 
-    <!-- links da navbar -->
-    <div class="collapse navbar-collapse navbar-submenu-collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-          <p class="navbar-btn">
-            <%= link_to user_stories_path, class: 'btn btn-default' do %>
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-            Voltar
-            <% end %>
-
-            <%= link_to edit_user_story_path(@user_story), class: 'btn btn-default' do %>
-            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-            Editar
-            <% end %>
-          </p>
-        </li>
-      </ul>
-    </div>
-    <!-- /.navbar-collapse -->
-  </div>
-</nav>
-<!-- /NAVBAR -->
-
-<%= render 'user_stories/breadcrumb' %>
-
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <p>
-        <strong>Description:</strong>
-        <%= @user_story.description %>
-      </p>
-      <p>
-        <strong>Business value:</strong>
-        <%= @user_story.business_value %>
-      </p>
-      <p>
-        <strong>Story points:</strong>
-        <%= @user_story.story_points %>
-      </p>
-      <p>
-        <strong>Status:</strong>
-        <%= @user_story.status %>
-      </p>
-      <p>
-        <strong>Theme:</strong>
-        <%= @user_story.theme.name unless @user_story.theme.nil? %>
-      </p>
-      <p>
-        <strong>Sprint:</strong>
-        <%= @user_story.sprint.name unless @user_story.sprint.nil? %>
-      </p>
-
-      <hr/>
-    </div>
+<div class="ui container">
+  <div class="ui menu"">
+    <a href="#" class="item active"><strong>User Story</strong></a>
+    <%= link_to 'Novo', new_user_story_path, class: 'item' %>
+    <%= link_to 'Editar', edit_user_story_path(@user_story), class: 'item' %>
+    <%= link_to 'Voltar', user_stories_path, class: 'item' %>
   </div>
 
-  <!-- <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active">
-          <a href="#tab_acceptance_criterions" aria-controls="tab_acceptance_criterions" role="tab" data-toggle="tab">
-            Critérios de aceitação
-          </a>
-        </li>
-
-        <li role="presentation">
-          <a href="#tab_tasks" aria-controls="tab_tasks" role="tab" data-toggle="tab">
-            Tarefas
-          </a>
-        </li>
-      </ul>
-
-      <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="tab_acceptance_criterions">
-          <ul>
-
-          </ul>
-        </div>
-        <div role="tabpanel" class="tab-pane" id="tab_tasks">
-          <p>Tarefas...</p>
-        </div>
-      </div>
-    </div>
-  </div> -->
+    <p>
+    <strong>Description:</strong>
+    <%= @user_story.description %>
+  </p>
+    <p>
+    <strong>Business value:</strong>
+    <%= @user_story.business_value %>
+  </p>
+    <p>
+    <strong>Story points:</strong>
+    <%= @user_story.story_points %>
+  </p>
+    <p>
+    <strong>Status:</strong>
+    <%= @user_story.status %>
+  </p>
+    <p>
+    <strong>Theme:</strong>
+    <%= @user_story.theme_id %>
+  </p>
+    <p>
+    <strong>Sprint:</strong>
+    <%= @user_story.sprint_id %>
+  </p>
+  
 </div>

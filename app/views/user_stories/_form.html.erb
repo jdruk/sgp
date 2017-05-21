@@ -1,87 +1,56 @@
-<div class="container">
-  <div class="row">
-    <%= form_for(@user_story) do |f| %>
+<%= form_for(@user_story, html: {class: 'ui form'}) do |f| %>
 
-    <% if @user_story.errors.any? %>
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <div class="alert alert-danger">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <p><strong>Wops!</strong></p>
-        <ul>
-          <% @user_story.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-    <% end %>
-    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6">
-      <div class="form-group">
-        <%= f.label :description %>
-        <%= f.text_area :description, class: 'form-control' %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :business_value %>
-        <%= f.number_field :business_value, class: 'form-control' %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :story_points %>
-        <%= f.number_field :story_points, class: 'form-control' %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :status %>
-        <%= f.select :status, options_for_select({pendent: 1, development: 2, test: 3, completed: 4}), {}, { :class => 'form-control' } %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :theme_id %>
-        <% sprints = current_project.themes.map {|sprint| [sprint.name, sprint.id] }; sprints << ['Novo tema...', 'new'] %>
-        <div id="theme_list">
-          <%= f.select(:theme_id, sprints, {:prompt => false}, {class: 'form-control'} ) %>
-        </div>
-
-        <div id="new_theme" class="hidden">
-          <%= f.text_field :theme_id, class: 'form-control new_theme' %>
-          <button class="btn btn-default" id="btn-list-themes">
-            <span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>
-          </button>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :sprint_id %>
-        <%= f.collection_select( :sprint_id,Sprint.all,:id,:name, {:prompt=>false},{class:'form-control'} ) %>
-      </div>
-
-      <div class="form-group">
-        <%= f.button type: 'submit', class: 'btn btn-primary' do %>
-        <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
-        Salvar
-        <% end %>
-      </div>
+  <% if @user_story.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @user_story.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
       <% end %>
+      </ul>
     </div>
-  </div>
-</div>
+  <% end %>
+
+    <div class="field">
+      <%= f.label :description %>
+    <%= f.text_area :description %>
+    </div>
+
+    <div class="field">
+      <%= f.label :business_value %>
+    <%= f.number_field :business_value %>
+    </div>
+
+    <div class="field">
+      <%= f.label :story_points %>
+    <%= f.number_field :story_points %>
+    </div>
+
+    <div class="field">
+      <%= f.label :status %>
+      <%= f.select :status, options_for_select({pendent: 1, development: 2, test: 3, completed: 4}), {}, { :class => 'ui search dropdown' } %>
+    </div>
+
+    <div class="field" id="theme_list">
+      <%= f.label :theme_id %>
+      <% sprints = current_project.themes.map {|sprint| [sprint.name, sprint.id] } %>
+      <%= f.select(:theme_id, sprints, {:prompt => false}, {class: 'ui search dropdown'} ) %>
+    </div>
+
+    <div class="field">
+      <%= f.label :sprint_id %>
+      <%= f.collection_select( :sprint_id, Sprint.all, :id, :name, {:prompt=>false}, {class: 'ui search dropdown'} ) %>
+    </div>
+
+  <% end %>
+
+<p></p>
+<p></p>
+<p></p>
 
 <script type="text/javascript">
-  $(function(){
-    $('#user_story_theme_id').change(function(){
-      if($('#user_story_theme_id').val() == 'new')
-      {
-        $("#new_theme").attr("class","");
-        $("#theme_list").attr("class","hidden");
-      }
-    });
-
-    $("#btn-list-themes").click(function(){
-      $("#new_theme").attr("class","hidden");
-      $(".new_theme").val("");
-      $("#theme_list").attr("class","");
-      return false;
-    });
+  $('.save').click(function(){
+    $('form').submit();
   });
+
+  $('.ui.search.dropdown').dropdown({ allowLabels:true});
 </script>

@@ -21,159 +21,173 @@
 
   <p></p>
 
-  <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <p>
-        <strong><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Projeto:</strong>
-        <%= @project.name %>
-      </p>
-      <p>
-        <strong><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Size:</strong>
-        <%= @project.size %> Story points
-      </p>
-      <p>
-        <strong><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Start date:</strong>
-        <%= l @project.start_date %>
-      </p>
-      <p>
-        <strong><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> End date:</strong>
-        <%= l @project.end_date %>
-      </p>
-      <p>
-        <strong><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Local:</strong>
-        <%= @project.local.name unless @project.local.nil? %>
-      </p>
+  <p>
+    <strong>
+      <i class="grid layout icon"></i>
+      Projeto:
+    </strong>
+    <%= @project.name %>
+  </p>
 
-      <div class="ui teal progress" id="project-progress" data-percent="<%= @project.progress %>">
-        <div class="bar"></div>
-        <div class="label">
-          Progresso <%= @project.progress %>%
-        </div>
-      </div>
+  <p>
+    <strong>
+      <i class="signal icon"></i> 
+      Size:
+    </strong>
+    <%= @project.size %> Story points
+  </p>
 
+  <p>
+    <strong>
+      <i class="calendar icon"></i>
+      Start date:
+    </strong>
+    <%= l @project.start_date %>
+  </p>
+
+  <p>
+    <strong>
+      <i class="calendar icon"></i>
+      End date:
+    </strong>
+    <%= l @project.end_date %>
+  </p>
+
+  <p>
+    <strong>
+      <i class="marker icon"></i>
+      Local:
+    </strong>
+    <%= @project.local.name unless @project.local.nil? %>
+  </p>
+
+  <div class="ui teal progress" id="project-progress" data-percent="<%= @project.progress %>">
+    <div class="bar"></div>
+    <div class="label">
+      Progresso <%= @project.progress %>%
     </div>
   </div>
+
+    
   <p></p>
 
   <div class="ui four cards">
-
-      <div class="card">
-        <div class="content">
-          <div class="header">Product Backlog</div>
-          <div class="description">
-            Lista de user stories (requisitos na visão do usuário)
-          </div>
+    <div class="card">
+      <div class="content">
+        <div class="header">Product Backlog</div>
+        <div class="description">
+          Lista de user stories (requisitos na visão do usuário)
         </div>
-
-        <button class="ui bottom attached button" onclick="window.location.href='<%= user_stories_path %>'">
-          <i class="settings icon"></i>
-          Gerenciar
-        </button>
       </div>
 
-      <div class="card">
-        <div class="content">
-          <div class="header">Sprints</div>
-          <div class="description">
-            Ciclos de trabalho da equipe
-          </div>
-        </div>
+      <button class="ui bottom attached button" onclick="window.location.href='<%= user_stories_path %>'">
+        <i class="settings icon"></i>
+        Gerenciar
+      </button>
+    </div>
 
-        <button class="ui bottom attached button" onclick="window.location.href='<%= sprints_path %>'">
-          <i class="settings icon"></i>
-          Gerenciar
-        </button>
+    <div class="card">
+      <div class="content">
+        <div class="header">Sprints</div>
+        <div class="description">
+          Ciclos de trabalho da equipe
+        </div>
       </div>
 
-      <div class="card">
-        <div class="content">
-          <div class="header">Releases</div>
-          <div class="description">
-            ......
-          </div>
-        </div>
+      <button class="ui bottom attached button" onclick="window.location.href='<%= sprints_path %>'">
+        <i class="settings icon"></i>
+        Gerenciar
+      </button>
+    </div>
 
-        <button class="ui bottom attached button" onclick="window.location.href='<%= releases_path %>'">
-          <i class="settings icon"></i>
-          Gerenciar
-        </button>
+    <div class="card">
+      <div class="content">
+        <div class="header">Releases</div>
+        <div class="description">
+          ......
+        </div>
       </div>
 
-      <div class="card">
-        <div class="content">
-          <div class="header">Membros</div>
-          <div class="description">
-            ......
-          </div>
-        </div>
+      <button class="ui bottom attached button" onclick="window.location.href='<%= releases_path %>'">
+        <i class="settings icon"></i>
+        Gerenciar
+      </button>
+    </div>
 
-        <button class="ui bottom attached button" onclick="window.location.href='<%= function_user_projects_path %>'">
-          <i class="settings icon"></i>
-          Gerenciar
-        </button>
+    <div class="card">
+      <div class="content">
+        <div class="header">Membros</div>
+        <div class="description">
+          ......
+        </div>
       </div>
 
-      <div class="card">
-        <div class="content">
-          <div class="header">Temas</div>
-          <div class="description">
-            ......
-          </div>
-        </div>
+      <button class="ui bottom attached button" onclick="window.location.href='<%= function_user_projects_path %>'">
+        <i class="settings icon"></i>
+        Gerenciar
+      </button>
+    </div>
 
-        <button class="ui bottom attached button" onclick="window.location.href='<%= themes_path %>'">
-          <i class="settings icon"></i>
-          Gerenciar
-        </button>
+    <div class="card">
+      <div class="content">
+        <div class="header">Temas</div>
+        <div class="description">
+          ......
+        </div>
       </div>
 
-      <div class="card">
-        <div class="content">
-          <div class="header">Critérios de aceitação</div>
-          <div class="description">
-            ......
-          </div>
-        </div>
+      <button class="ui bottom attached button" onclick="window.location.href='<%= themes_path %>'">
+        <i class="settings icon"></i>
+        Gerenciar
+      </button>
+    </div>
 
-        <button class="ui bottom attached button" onclick="window.location.href='<%= user_story_acceptance_criterions_path %>'">
-          <i class="settings icon"></i>
-          Gerenciar
-        </button>
+    <div class="card">
+      <div class="content">
+        <div class="header">Critérios de aceitação</div>
+        <div class="description">
+          ......
+        </div>
       </div>
 
-      <div class="card">
-        <div class="content">
-          <div class="header">Tarefas</div>
-          <div class="description">
-            ......
-          </div>
-        </div>
+      <button class="ui bottom attached button" onclick="window.location.href='<%= user_story_acceptance_criterions_path %>'">
+        <i class="settings icon"></i>
+        Gerenciar
+      </button>
+    </div>
 
-        <button class="ui bottom attached button" onclick="window.location.href='<%= tasks_path %>'">
-          <i class="settings icon"></i>
-          Gerenciar
-        </button>
+    <div class="card">
+      <div class="content">
+        <div class="header">Tarefas</div>
+        <div class="description">
+          ......
+        </div>
       </div>
 
-      <div class="card">
-        <div class="content">
-          <div class="header">Habilidades requeridas da tarefa</div>
-          <div class="description">
-            ......
-          </div>
-        </div>
+      <button class="ui bottom attached button" onclick="window.location.href='<%= tasks_path %>'">
+        <i class="settings icon"></i>
+        Gerenciar
+      </button>
+    </div>
 
-        <button class="ui bottom attached button" onclick="window.location.href='<%= task_requirements_path %>'">
-          <i class="settings icon"></i>
-          Gerenciar
-        </button>
+    <div class="card">
+      <div class="content">
+        <div class="header">Habilidades requeridas da tarefa</div>
+        <div class="description">
+          ......
+        </div>
       </div>
+
+      <button class="ui bottom attached button" onclick="window.location.href='<%= task_requirements_path %>'">
+        <i class="settings icon"></i>
+        Gerenciar
+      </button>
     </div>
   </div>
-
-  <p></p>
-  <p></p>
 </div>
+
+<p></p>
+<p></p>
 
 <script type="text/javascript">
   $('.progress').progress();
