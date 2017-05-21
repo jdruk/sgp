@@ -5,38 +5,34 @@
   Inicio
   <% end %>
 
-  <%= link_to disorder_groups_path, class: "#{is_current_page?(disorder_groups_path)} item" do %>
+  <%= link_to projects_path, class: "#{is_current_page?(projects_path)} item" do %>
   <i class="sitemap icon"></i>
-  Grupos de transtornos
+  Projetos
   <% end %>
 
-  <%= link_to disorders_path, class: "#{is_current_page?(disorders_path)} item" do %>
-  <i class="heartbeat outline icon"></i>
-  Transtornos
+  <%= link_to users_path, class: "#{is_current_page?(users_path)} item" do %>
+  <i class="users icon"></i>
+  Usuários
   <% end %>
   
-  <%= link_to genders_path, class: "#{is_current_page?(genders_path)} item" do %>
-  <i class="heterosexual icon"></i>
-  Gêneros
+  <%= link_to functions_path, class: "#{is_current_page?(functions_path)} item" do %>
+  <i class="setting icon"></i>
+  Funções
   <% end %>
 
-  <%= link_to age_groups_path, class: "#{is_current_page?(age_groups_path)} item" do %>
-  <i class="calendar icon"></i>
-  Faixas etárias
-  <% end %>
-  
-  <%= link_to testimonies_path, class: "#{is_current_page?(testimonies_path)} item" do %>
-  <i class="book icon"></i>
-  Depoimentos
+  <%= link_to languages_path, class: "#{is_current_page?(languages_path)} item" do %>
+  <i class="talk icon"></i>
+  Languagens
   <% end %>
 
-  <%= link_to videos_path, class: "#{is_current_page?(videos_path)} item" do %>
-  <i class="film icon"></i>
-  Vídeos
+  <%= link_to abilities_path, class: "#{is_current_page?(abilities_path)} item" do %>
+  <i class="setting icon"></i>
+  Habilidades
   <% end %>
 
-  <%= link_to svm_path, class: "#{is_current_page?(videos_path)} item" do %>
-  <i class="rocket icon"></i>
-  Testar SVM
+  <%= link_to locals_path, class: "#{is_current_page?(locals_path)} item" do %>
+  <i class="marker icon"></i>
+  Localidades
   <% end %>
+
 </div>
