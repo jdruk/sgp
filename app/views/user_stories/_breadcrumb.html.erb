@@ -1,11 +1,11 @@
 <!-- BREADCRUMB -->
-<div class="container">
-  <div class="row">
-    <ol class="breadcrumb">
-      <li><%= link_to "Projetos", projects_path %></li>
-      <li><%= link_to current_project.name, project_path(current_project) %></li>
-      <li class="active">Product backlog</li>
-    </ol>
-  </div>
+<div class="ui breadcrumb">
+  <%= link_to "Projetos", projects_path, class: 'section' %>
+  <div class="divider"> / </div>
+
+  <%= link_to current_project.name, project_path(current_project), class: 'section' %>
+  <div class="divider"> / </div>
+
+  <div class="active section">Product backlog</div>
 </div>
 <!-- /BREADCRUMB -->

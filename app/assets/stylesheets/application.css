@@ -49,8 +49,8 @@ p.middle {
 .text-center { text-align: center !important; }
 
 /* progress bar */
-.progress { height: 8px; background-color: #ccc; }
-.progress-bar-xp { background-color: #49147F; }
+/*.progress { height: 8px; background-color: #ccc; }
+.progress-bar-xp { background-color: #49147F; }*/
 
 /* sidebar for dashboard */
 .sub-header {
