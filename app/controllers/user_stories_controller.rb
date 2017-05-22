@@ -8,6 +8,8 @@ class UserStoriesController < ApplicationController
   # GET /user_stories.json
   def index
     @user_stories = UserStory.where(project_id: current_project_id)
+    @criterion = UserStoryAcceptanceCriterion.new
+    @task = Task.new
   end
 
   # GET /user_stories/1

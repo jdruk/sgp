@@ -31,36 +31,29 @@ class UserStoryAcceptanceCriterionsController < ApplicationController
 
     respond_to do |format|
       if @user_story_acceptance_criterion.save
-        format.html { redirect_to @user_story_acceptance_criterion, notice: 'User story acceptance criterion was successfully created.' }
-        format.json { render :show, status: :created, location: @user_story_acceptance_criterion }
+        format.html { redirect_to user_stories_path }
       else
-        format.html { render :new }
-        format.json { render json: @user_story_acceptance_criterion.errors, status: :unprocessable_entity }
+        format.html { redirect_to user_stories_path, notice: 'NÃO foi possível salvar!' }
+        #format.html { render :new }
       end
     end
   end
 
-  # PATCH/PUT /user_story_acceptance_criterions/1
-  # PATCH/PUT /user_story_acceptance_criterions/1.json
   def update
     respond_to do |format|
       if @user_story_acceptance_criterion.update(user_story_acceptance_criterion_params)
-        format.html { redirect_to @user_story_acceptance_criterion, notice: 'User story acceptance criterion was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user_story_acceptance_criterion }
+        format.html { redirect_to @user_story_acceptance_criterion, notice: 'Critério de aceitação salvo com sucesso!' }
       else
-        format.html { render :edit }
-        format.json { render json: @user_story_acceptance_criterion.errors, status: :unprocessable_entity }
+        format.html { redirect_to @user_story_acceptance_criterion, notice: 'NÃO foi possível salvar!' }
+        #format.html { render :edit }
       end
     end
   end
 
-  # DELETE /user_story_acceptance_criterions/1
-  # DELETE /user_story_acceptance_criterions/1.json
   def destroy
     @user_story_acceptance_criterion.destroy
     respond_to do |format|
-      format.html { redirect_to user_story_acceptance_criterions_url, notice: 'User story acceptance criterion was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { redirect_to user_stories_path }
     end
   end
 

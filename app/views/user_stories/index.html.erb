@@ -1,5 +1,3 @@
-<p></p>
-
 <div class="ui container">
   <div class="ui menu"">
     <a href="#" class="item active"><strong>User Stories</strong></a>
@@ -8,38 +6,149 @@
 
   <%= render 'user_stories/breadcrumb' %>
 
-  <table class="ui celled table">
+  <table class="ui sortable very compact celled table">
     <thead>
       <tr>
-                <th>Description</th>
-                <th>Business value</th>
-                <th>Story points</th>
-                <th>Status</th>
-                <th>Theme</th>
-                <th>Sprint</th>
-                <th width="250">Ações</th>
+        <th>Tema</th>
+        <th>Descrição</th>
+        <th title="Business Value">BV</th>
+        <th title="Story Points">SP</th>
+        <th>ROI</th>
+        <th>Status</th>
+        <th>Sprint</th>
+        <th>Critérios de aceitação</th>
+        <th>Tarefas</th>
+        <th>Ações</th>
       </tr>
     </thead>
 
     <tbody>
       <% @user_stories.each do |user_story| %>
         <tr>
-                    <td><%= user_story.description %></td>
-                    <td><%= user_story.business_value %></td>
-                    <td><%= user_story.story_points %></td>
-                    <td><%= user_story.status %></td>
-                    <td><%= user_story.theme_id %></td>
-                    <td><%= user_story.sprint_id %></td>
-                    <td>
-            <div class="ui buttons">
-            <%= link_to 'Exibir', user_story, class: 'ui blue basic button' %>
-            <%= link_to 'Editar', edit_user_story_path(user_story), class: 'ui blue basic button' %>
-            <%= link_to 'Remover', user_story, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'ui red basic button' %>
+          <td><%= user_story.theme.name unless user_story.theme.nil?  %></td>
+          <td><%= user_story.description %></td>
+          <td><%= user_story.business_value %></td>
+          <td><%= user_story.story_points %></td>
+          <td><%= user_story.roi %></td>
+          <td><%= user_story.status_label %></td>
+          <td><%= user_story.sprint_id %></td>
+          <td>
+            <a class="ui compact teal icon mini button new_criterion" userstory="<%= user_story.id %>" title="Adicionar critério de aceitação"><i class="plus icon"></i> Adicionar</a>
+            <p></p>
+            <% user_story.user_story_acceptance_criterions.each do |c| %>
+            <p>
+              <%= link_to c, method: :delete, class: 'ui compact mini icon red basic button', title: 'Remover critério de aceitação' do %>
+                <i class="trash icon"></i>
+                Remover
+              <% end %>
+              <%= c.description %>
+            </p>
+            <% end %>
+          </td>
+
+          <td></td>
+          
+          <td>
+            <div class="ui compact mini icon buttons">
+            <%= link_to user_story, class: 'ui blue basic button' do %>
+            <i class="search icon"></i>
+            <% end %>
+
+            <%= link_to edit_user_story_path(user_story), class: 'ui blue basic button' do %>
+            <i class="edit icon"></i>
+            <% end %>
+
+            <%= link_to user_story, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'ui red basic button' do %>
+            <i class="trash icon"></i>
+            <% end %>
             </div>
           </td>
         </tr>
       <% end %>
     </tbody>
   </table>
-
 </div>
+
+<!-- MODAL CRITÉRIOS DE ACEITAÇÃO -->
+<div class="ui container">
+  <div class="ui small modal criterion">
+    
+    <div class="header">
+      Adicionar critério de aceitação
+    </div>
+    
+    <div class="content">
+      <div class="ui grid">
+        <div class="row">
+          <div class="sixteen wide tablet eight wide computer column">
+            <%= form_for(@criterion, html: {class: 'ui form'}) do |f| %>
+
+              <div class="field">
+                <label><strong>Descrição: </strong></label>
+                <%= f.text_field :description %>
+              </div>
+              
+              <div class="field">
+                <%= f.hidden_field :user_story_id %>
+                <%= f.hidden_field :status, value: '1' %>
+              </div>
+
+              <div class="field">
+                <%= f.submit 'Adicionar', class: 'ui teal labeled button' %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div> 
+    </div>
+  </div> 
+</div>
+<!-- /MODAL CRITÉRIOS DE ACEITAÇÃO -->
+
+<!-- MODAL TAREFA -->
+<div class="ui container">
+  <div class="ui small modal task">
+    
+    <div class="header">
+      Adicionar tarefa
+    </div>
+    
+    <div class="content">
+      <div class="ui grid">
+        <div class="row">
+          <div class="sixteen wide tablet eight wide computer column">
+            <%= form_for(@task, html: {class: 'ui form'}) do |f| %>
+
+              <div class="field">
+                <label><strong>Descrição: </strong></label>
+                <%= f.text_field :description %>
+              </div>
+              
+              <div class="field">
+                <%= f.hidden_field :user_story_id %>
+                <%= f.hidden_field :status, value: '1' %>
+              </div>
+
+              <div class="field">
+                <%= f.submit 'Adicionar', class: 'ui teal labeled button' %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div> 
+    </div>
+  </div> 
+</div>
+<!-- /MODAL TAREFA -->
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    //$('.sortable').tablesort();
+  });
+
+  $('.button.new_criterion').click(function(){
+    $('#user_story_acceptance_criterion_user_story_id').val($(this).attr('userstory'));
+    $('.ui.modal.criterion').modal('show');
+    return false;
+  });
+</script>
