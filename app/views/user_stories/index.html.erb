@@ -46,7 +46,19 @@
             <% end %>
           </td>
 
-          <td></td>
+          <td>
+            <a class="ui compact teal icon mini button new_task" userstory="<%= user_story.id %>" title="Adicionar tarefa"><i class="plus icon"></i> Adicionar</a>
+            <p></p>
+            <% user_story.tasks.each do |s| %>
+            <p>
+              <%= link_to s, method: :delete, class: 'ui compact mini icon red basic button', title: 'Remover tarefa' do %>
+                <i class="trash icon"></i>
+                Remover
+              <% end %>
+              <%= s.description %>
+            </p>
+            <% end %>
+          </td>
           
           <td>
             <div class="ui compact mini icon buttons">
@@ -125,6 +137,11 @@
               </div>
               
               <div class="field">
+                <label><strong>Skills: </strong></label>
+                <%= f.select :ability_ids, Ability.all.collect {|x| [x.name, x.id]}, {prompt: 'Selecionar Skills'}, multiple: true, class: "ui search dropdown" %>
+              </div>
+              
+              <div class="field">
                 <%= f.hidden_field :user_story_id %>
                 <%= f.hidden_field :status, value: '1' %>
               </div>
@@ -146,9 +163,17 @@
     //$('.sortable').tablesort();
   });
 
+  $('.ui.search.dropdown').dropdown({ allowLabels:true});
+
   $('.button.new_criterion').click(function(){
     $('#user_story_acceptance_criterion_user_story_id').val($(this).attr('userstory'));
     $('.ui.modal.criterion').modal('show');
+    return false;
+  });
+
+  $('.button.new_task').click(function(){
+    $('#task_user_story_id').val($(this).attr('userstory'));
+    $('.ui.modal.task').modal('show');
     return false;
   });
 </script>

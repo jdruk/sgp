@@ -5,6 +5,6 @@ class Ability < ActiveRecord::Base
 	has_many :users, through: :user_abilities
 
 	validates :name, presence: true
-	validates :description, presence: true
-	validates :scope, presence: true
+	#validates :description, presence: true
+	#validates :scope, presence: true
 end
