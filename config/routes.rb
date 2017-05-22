@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get '/settings', to: 'settings#index', as: 'settings'
+
   #root to: redirect('/users/sign_in')
   root to: 'static#home_page'
   
@@ -28,7 +30,11 @@ Rails.application.routes.draw do
   resources :user_stories
   resources :sprints
   resources :releases
-  resources :themes
+  
+  resources :themes do
+    get :autocomplete, :on => :collection
+  end
+
   resources :projects
   resources :functions
   resources :abilities

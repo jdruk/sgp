@@ -10,35 +10,31 @@
     </div>
   <% end %>
 
+    <div class="inline field">
+      <%# f.label 'Tema' %>
+      <div class="ui search icon input">
+          <%= f.text_field :theme_search, class: 'prompt', placeholder: 'Tema' %>
+          <i class="search icon"></i>
+        <div class="results"></div>
+      </div>
+
+      <%= f.number_field :business_value, placeholder: 'business value' %>
+      <%= f.number_field :story_points, placeholder: 'Story point' %>
+    </div>
+
     <div class="field">
       <%= f.label :description %>
-    <%= f.text_area :description %>
+      <%= f.text_area :description %>
     </div>
 
-    <div class="field">
-      <%= f.label :business_value %>
-    <%= f.number_field :business_value %>
-    </div>
+    <div class="inline field">
+      <%# f.select(:theme_id, sprints, {:prompt => false}, {class: 'ui search dropdown'} ) %>
 
-    <div class="field">
-      <%= f.label :story_points %>
-    <%= f.number_field :story_points %>
-    </div>
+      <% sprints = current_project.themes.map {|sprint| [sprint.name, sprint.id] }; sprints << ["Selecione um tema", ""] %>
+      
+      <%= f.collection_select( :sprint_id, Sprint.all, :id, :name, {:prompt => 'Sprint'}, {class: 'ui search dropdown', placeholder: 'Sprint'} ) %>
 
-    <div class="field">
-      <%= f.label :status %>
-      <%= f.select :status, options_for_select({pendent: 1, development: 2, test: 3, completed: 4}), {}, { :class => 'ui search dropdown' } %>
-    </div>
-
-    <div class="field" id="theme_list">
-      <%= f.label :theme_id %>
-      <% sprints = current_project.themes.map {|sprint| [sprint.name, sprint.id] } %>
-      <%= f.select(:theme_id, sprints, {:prompt => false}, {class: 'ui search dropdown'} ) %>
-    </div>
-
-    <div class="field">
-      <%= f.label :sprint_id %>
-      <%= f.collection_select( :sprint_id, Sprint.all, :id, :name, {:prompt=>false}, {class: 'ui search dropdown'} ) %>
+      <%= f.select :status, options_for_select({pendent: 1, development: 2, test: 3, completed: 4}), {:prompt => 'Status'}, { :class => 'ui search dropdown', placeholder: 'Status' } %>
     </div>
 
   <% end %>
@@ -53,4 +49,20 @@
   });
 
   $('.ui.search.dropdown').dropdown({ allowLabels:true});
+
+  $(document).ready(function() {
+    $('.ui.search')
+    .search({
+      apiSettings: {
+        url: "//" + location.host + "/themes/autocomplete.json?query={query}"
+      },
+      fields: {
+        results: 'themes',
+        title: 'name',
+        description: 'description'
+      },
+      minCharacters : 0
+    });
+  });
+
 </script>

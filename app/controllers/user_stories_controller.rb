@@ -30,6 +30,15 @@ class UserStoriesController < ApplicationController
     @user_story = UserStory.new(user_story_params)
     @user_story.project_id = current_project_id
 
+    theme = Theme.where(project_id: current_project_id, name: params[:user_story][:theme_search])
+
+    if theme.empty?
+      theme = Theme.create(name: params[:user_story][:theme_search], description: '', project_id: current_project_id)
+      @user_story.theme_id = theme.id
+    else
+      @user_story.theme_id = theme.id
+    end
+
     respond_to do |format|
       if @user_story.save
         format.html { redirect_to @user_story, notice: 'User story was successfully created.' }
@@ -77,6 +86,6 @@ class UserStoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_story_params
-      params.require(:user_story).permit(:description, :business_value, :story_points, :status, :theme_id, :sprint_id)
+      params.require(:user_story).permit(:description, :business_value, :story_points, :status, :sprint_id)
     end
 end

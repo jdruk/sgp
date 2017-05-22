@@ -4,8 +4,10 @@ class ThemesController < ApplicationController
     redirect_to no_project_selected_path unless has_project_selected?
   end
 
-  # GET /themes
-  # GET /themes.json
+  def autocomplete
+    @themes = Theme.order(:name).where("project_id = #{current_project_id} and name like ?", "%#{params[:query]}%")
+  end
+  
   def index
     @themes = Theme.where(project_id: current_project_id)
   end

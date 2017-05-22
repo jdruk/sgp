@@ -9,7 +9,7 @@ body { padding-top: 42px; }
 
 .main-pusher {
   padding-top: 4em;
-  padding-left: 5em;
+  padding-left: 16em;
   padding-right: 1em;
 }
 
@@ -102,6 +102,8 @@ body { padding-top: 42px; }
 
 .justify { text-align: justify; }
 .indent { text-indent: 2em; }
+
+.sidebar.menu.overlay.labeled.icon { width: 15em; }
 
 /*.ui.footer {
   position: relative;

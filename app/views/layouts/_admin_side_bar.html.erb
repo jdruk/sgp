@@ -14,25 +14,9 @@
   <i class="users icon"></i>
   Usuários
   <% end %>
-  
-  <%= link_to functions_path, class: "#{is_current_page?(functions_path)} item" do %>
-  <i class="setting icon"></i>
-  Funções
-  <% end %>
 
-  <%= link_to languages_path, class: "#{is_current_page?(languages_path)} item" do %>
-  <i class="talk icon"></i>
-  Languagens
+  <%= link_to settings_path, class: "#{is_current_page?(settings_path)} item" do %>
+  <i class="settings icon"></i>
+  Configurações
   <% end %>
-
-  <%= link_to abilities_path, class: "#{is_current_page?(abilities_path)} item" do %>
-  <i class="setting icon"></i>
-  Habilidades
-  <% end %>
-
-  <%= link_to locals_path, class: "#{is_current_page?(locals_path)} item" do %>
-  <i class="marker icon"></i>
-  Localidades
-  <% end %>
-
 </div>

@@ -1,5 +1,6 @@
 class UserStory < ActiveRecord::Base
   #enum status: {pendent: 1, development: 2, test: 3, completed: 4}
+  attr_accessor :theme_search
 
   belongs_to :theme
   belongs_to :sprint
