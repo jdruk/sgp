@@ -9,6 +9,10 @@
       </ul>
     </div>
   <% end %>
+    <div class="field">
+      <%= f.label :project_id %>
+      <%= f.collection_select( :project_id, Project.all, :id, :name, {:prompt => 'Projeto'}, {class: 'ui search dropdown', placeholder: 'Projeto'} ) %>
+    </div>
 
     <div class="field">
       <%= f.label :name %>

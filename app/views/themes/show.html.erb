@@ -8,12 +8,18 @@
     <%= link_to 'Voltar', themes_path, class: 'item' %>
   </div>
 
+  <p>
+    <strong>Projeto:</strong>
+    <%= @theme.project.name %>
+  </p>
+
     <p>
-    <strong>Name:</strong>
+    <strong>Nome:</strong>
     <%= @theme.name %>
   </p>
+
     <p>
-    <strong>Description:</strong>
+    <strong>Descrição:</strong>
     <%= @theme.description %>
   </p>
   

@@ -30,13 +30,18 @@ class UserStoriesController < ApplicationController
     @user_story = UserStory.new(user_story_params)
     @user_story.project_id = current_project_id
 
-    theme = Theme.where(project_id: current_project_id, name: params[:user_story][:theme_search])
 
-    if theme.empty?
-      theme = Theme.create(name: params[:user_story][:theme_search], description: '', project_id: current_project_id)
-      @user_story.theme_id = theme.id
-    else
-      @user_story.theme_id = theme.id
+    # se o campo tema não for preenchido, ignora
+    # caso sim, verifica se o tema já existe, se não então cria
+    theme = Theme.where(project_id: current_project_id, name: params[:user_story][:theme_search]).first
+    
+    unless params[:user_story][:theme_search].empty?
+      if theme.nil?
+        theme = Theme.create(name: params[:user_story][:theme_search], description: '', project_id: current_project_id)
+        @user_story.theme_id = theme.id
+      else
+        @user_story.theme_id = theme.id
+      end
     end
 
     respond_to do |format|
@@ -53,6 +58,19 @@ class UserStoriesController < ApplicationController
   # PATCH/PUT /user_stories/1
   # PATCH/PUT /user_stories/1.json
   def update
+    # se o campo tema não for preenchido, ignora
+    # caso sim, verifica se o tema já existe, se não então cria
+    theme = Theme.where(project_id: current_project_id, name: params[:user_story][:theme_search]).first
+
+    unless params[:user_story][:theme_search].empty?
+      if theme.nil?
+        theme = Theme.create(name: params[:user_story][:theme_search], description: '', project_id: current_project_id)
+        @user_story.theme_id = theme.id
+      else
+        @user_story.theme_id = theme.id
+      end
+    end
+
     respond_to do |format|
       if @user_story.update(user_story_params)
         format.html { redirect_to @user_story, notice: 'User story was successfully updated.' }
