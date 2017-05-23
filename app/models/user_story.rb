@@ -5,9 +5,13 @@ class UserStory < ActiveRecord::Base
   belongs_to :theme
   belongs_to :sprint
   belongs_to :project
+  
   has_many :user_story_acceptance_criterions
   has_many :tasks
   
+  has_many :participants, dependent: :destroy
+  has_many :users, through: :participants
+
   validates :description, presence: true
 
   def roi
@@ -27,4 +31,9 @@ class UserStory < ActiveRecord::Base
     end
   end
 
+  def progress
+    return self.tasks.where(status: 4).count * 100 / self.tasks.count
+  rescue
+    return 0
+  end
 end

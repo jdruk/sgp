@@ -26,7 +26,7 @@
       <% @user_stories.each do |user_story| %>
         <tr>
           <td><%= user_story.theme.name unless user_story.theme.nil?  %></td>
-          <td><%= user_story.description %></td>
+          <td><%= user_story.description.truncate(25, omission: '...') %></td>
           <td><%= user_story.business_value %></td>
           <td><%= user_story.story_points %></td>
           <td><%= user_story.roi %></td>

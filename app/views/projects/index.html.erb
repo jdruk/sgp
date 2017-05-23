@@ -5,6 +5,7 @@
   <% if current_user.group != 'admin' %>
     <h1>Projetos</h1>
     <hr>
+    <p></p>
     <%= render 'projects/list_projects_default' %>
   <% else %>
     <div class="ui menu"">

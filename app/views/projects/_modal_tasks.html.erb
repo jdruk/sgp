@@ -1,0 +1,22 @@
+<!-- MODAL TAREFA -->
+<div class="ui container">
+  <div class="ui small modal usertory-<%= us.id %>">
+    
+    <div class="header">
+      Tarefas
+    </div>
+    
+    <div class="content">
+      <div class="ui grid">
+        <div class="row">
+          <div class="sixteen wide tablet eight wide computer column">
+            <% us.tasks.each do |task| %>
+            <p><%= task.description %></p>
+            <% end %>
+          </div>
+        </div>
+      </div> 
+    </div>
+  </div> 
+</div>
+<!-- /MODAL TAREFA -->

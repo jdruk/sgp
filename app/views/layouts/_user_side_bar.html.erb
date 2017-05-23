@@ -1,8 +1,8 @@
 <!-- side left menu -->
 <div class="ui vertical inverted left visible sidebar menu overlay labeled icon">
   <%= link_to root_path, class: "#{is_current_page?(dashboard_path)} item" do %>
-  <i class="home icon"></i>
-  Inicio
+  <i class="dashboard icon"></i>
+  Dashboard
   <% end %>
 
   <%= link_to projects_path, class: "#{is_current_page?(projects_path)} item" do %>

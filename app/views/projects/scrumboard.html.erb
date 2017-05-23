@@ -11,16 +11,74 @@
   <table class="ui very compact celled table">
     <thead>
       <tr>
-        <th>Para fazer</th>
-        <th>Fazendo</th>
-        <th>Teste</th>
-        <th>Concluído</th>
+        <th width="25%">Para fazer</th>
+        <th width="25%">Fazendo</th>
+        <th width="25%">Teste</th>
+        <th width="25%">Concluído</th>
       </tr>
     </thead>
 
     <tbody>
       <tr>
-        <td></td>
+        <td>
+
+        <% sprint.user_stories.where(status: 1).each do |us| %>
+          <div class="ui card">
+            <div class="content">
+              <div class="header">User Story - <%= us.theme.name %></div>
+              <div class="meta">
+                <span class="category"><%= us.description %></span>
+              </div>
+              <div class="description">
+                <p>
+                  <a href="#" data-modal="usertory-<%= us.id %>" class="modal-task">
+                    <i class="tasks icon"></i>
+                    Tarefas: <%= us.tasks.count %>
+                  </a>
+                </p>
+
+                <%= render partial: 'projects/modal_tasks', locals: {us: us} %>
+                <%# render 'projects/modal_tasks' %>
+
+                <p>
+                  <a href="#">
+                    <i class="tasks icon"></i>
+                    Critérios de aceitação: <%= us.user_story_acceptance_criterions.count %>
+                  </a>
+                </p>
+                
+                <p>
+                  <a href="#" class="ui teal">
+                    <i class="reply icon"></i>
+                    Abandonar
+                  </a>
+
+                  <a href="#" class="ui teal">
+                    <i class="sign in icon"></i>
+                    Participar
+                  </a>
+                </p>
+
+                <!-- PROGRESSBAR -->
+                <div class="ui tiny teal progress" data-percent="<%= us.progress %>">
+                  <div class="bar"></div>
+                  <div class="label">
+                    <%= us.progress %>%
+                  </div>
+                </div>
+                <!-- /PROGRESSBAR -->
+              </div>
+            </div>
+            <div class="extra content">
+              <div class="right floated author">
+                <%= image_tag 'image.svg', class: 'ui avatar image' %> Fulano
+                <%= image_tag 'image.svg', class: 'ui avatar image' %> Sicrano
+              </div>
+            </div>
+          </div>
+        <% end %>
+
+        </td>
         <td></td>
         <td></td>
         <td></td>
@@ -33,4 +91,14 @@
 
 <script type="text/javascript">
   $('.tabular.menu .item').tab();
+
+  $(document).ready(function() {
+    //$('.sortable').tablesort();
+  });
+
+  $('.modal-task').click(function(){
+    $('.'+$(this).attr('data-modal')).modal('show');
+    return false;
+  });
+
 </script>
