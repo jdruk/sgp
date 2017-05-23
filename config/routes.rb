@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get '/project/scrumboard/:id', to: 'projects#scrumboard', as: 'scrumboard'
+
   get '/settings', to: 'settings#index', as: 'settings'
 
   #root to: redirect('/users/sign_in')

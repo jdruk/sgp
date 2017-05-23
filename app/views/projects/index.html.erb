@@ -1,10 +1,18 @@
 <p></p>
 
 <div class="ui container">
-  <div class="ui menu"">
-    <a href="#" class="item active"><strong>Projetos</strong></a>
-    <%= link_to "Novo", new_project_path, class: 'item' %>
-  </div>
 
-  <%= render 'projects/list_projects_default' %>
+  <% if current_user.group != 'admin' %>
+    <h1>Projetos</h1>
+    <hr>
+    <%= render 'projects/list_projects_default' %>
+  <% else %>
+    <div class="ui menu"">
+      <a href="#" class="item active"><strong>Projetos</strong></a>
+      <%= link_to "Novo", new_project_path, class: 'item' %>
+    </div>
+
+    <%= render 'projects/list_projects_admin' %>
+  <% end %>
+
 </div>

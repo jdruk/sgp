@@ -43,7 +43,7 @@
           </td>
           <td class="ui center aligned"><%= l sprint.review_meeting_date %></td>
           <td class="ui center aligned"><%= l sprint.retrospective_meeting_date %></td>
-          <td class="ui center aligned"><%= sprint.release.name unless sprint.release.nil?  %></td>
+          <td class="ui center aligned"><%= sprint.release.version unless sprint.release.nil?  %></td>
           <td>
             <div class="ui buttons">
             <%= link_to 'Exibir', sprint, class: 'ui blue basic button' %>

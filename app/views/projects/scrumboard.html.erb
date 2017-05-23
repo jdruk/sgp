@@ -1,0 +1,36 @@
+<h1>Scrumboard</h1>
+
+<div class="ui top pointing secondary attached tabular menu">
+  <% @project.sprints.each_with_index do |sprint, i| %>
+    <a class="item <%= 'active' if i == 0 %>" data-tab="tab-<%= sprint.id %>"><%= sprint.name %></a>
+  <% end %>
+</div>
+
+<% @project.sprints.each_with_index do |sprint, i| %>
+<div class="ui bottom attached tab segment <%= 'active' if i == 0 %>" data-tab="tab-<%= sprint.id %>">
+  <table class="ui very compact celled table">
+    <thead>
+      <tr>
+        <th>Para fazer</th>
+        <th>Fazendo</th>
+        <th>Teste</th>
+        <th>Concluído</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<% end %>
+
+
+<script type="text/javascript">
+  $('.tabular.menu .item').tab();
+</script>

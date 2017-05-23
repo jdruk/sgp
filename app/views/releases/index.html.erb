@@ -11,18 +11,18 @@
   <table class="ui celled table">
     <thead>
       <tr>
-                <th>Version</th>
-                <th>Deliver date</th>
-                <th width="250">Ações</th>
+        <th>Version</th>
+        <th>Data de entrega</th>
+        <th width="250">Ações</th>
       </tr>
     </thead>
 
     <tbody>
       <% @releases.each do |release| %>
         <tr>
-                    <td><%= release.version %></td>
-                    <td><%= release.deliver_date %></td>
-                    <td>
+          <td><%= release.version %></td>
+          <td><%= release.deliver_date %></td>
+          <td>
             <div class="ui buttons">
             <%= link_to 'Exibir', release, class: 'ui blue basic button' %>
             <%= link_to 'Editar', edit_release_path(release), class: 'ui blue basic button' %>
