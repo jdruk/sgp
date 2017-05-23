@@ -1,22 +1,32 @@
 <!-- MODAL TAREFA -->
-<div class="ui container">
-  <div class="ui small modal usertory-<%= us.id %>">
-    
-    <div class="header">
-      Tarefas
-    </div>
-    
-    <div class="content">
-      <div class="ui grid">
-        <div class="row">
-          <div class="sixteen wide tablet eight wide computer column">
-            <% us.tasks.each do |task| %>
-            <p><%= task.description %></p>
-            <% end %>
-          </div>
+<div class="ui small modal usertory-<%= us.id %>">
+  
+  <div class="header">
+    User Story
+  </div>
+  
+  <div class="content">
+    <div class="ui grid">
+      <div class="row">
+        <div class="sixteen wide tablet sixteen wide computer column">
+          <p>
+            <strong>Tema:</strong>
+            <%= us.theme.name %>
+          </p>
+          <p>
+            <strong>Descrição:</strong>
+            <%= us.description %>    
+          </p>
+          <hr>
+          <p>
+            <strong>Critérios de Aceitação</strong>
+          </p>
+          <% us.user_story_acceptance_criterions.each do |c| %>
+          <p><%= c.description %></p>
+          <% end %>
         </div>
-      </div> 
-    </div>
-  </div> 
-</div>
+      </div>
+    </div> 
+  </div>
+</div> 
 <!-- /MODAL TAREFA -->

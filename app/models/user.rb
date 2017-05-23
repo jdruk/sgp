@@ -18,8 +18,11 @@ class User < ActiveRecord::Base
 
   has_many :participants, dependent: :destroy
   has_many :user_stories, through: :participants
+
+  has_many :users_tasks, dependent: :destroy
+  has_many :tasks, through: :users_tasks
   
   belongs_to :local
-  has_and_belongs_to_many :tasks
+  #has_and_belongs_to_many :tasks
 
 end
