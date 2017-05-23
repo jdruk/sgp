@@ -8,39 +8,32 @@
     <%= link_to 'Voltar', sprints_path, class: 'item' %>
   </div>
 
-    <p>
-    <strong>Start date:</strong>
-    <%= @sprint.start_date %>
+  <p>
+    <strong>Duração:</strong>
+    <%= l @sprint.start_date %> à <%= l @sprint.end_date %>
   </p>
-    <p>
-    <strong>End date:</strong>
-    <%= @sprint.end_date %>
+
+  <p>
+    <strong>Planejamento:</strong>
+    <%= l @sprint.planning_start_date %> à <%= l @sprint.planning_end_date %>
   </p>
-    <p>
-    <strong>Planning start date:</strong>
-    <%= @sprint.planning_start_date %>
+
+  <p>
+    <strong>Execução:</strong>
+    <%= l @sprint.execution_start_date %> à <%= l @sprint.execution_end_date %>
   </p>
-    <p>
-    <strong>Planning end date:</strong>
-    <%= @sprint.planning_end_date %>
+
+  <p>
+    <strong>Review meeting:</strong>
+    <%= l @sprint.review_meeting_date %>
   </p>
-    <p>
-    <strong>Execution start date:</strong>
-    <%= @sprint.execution_start_date %>
+
+  <p>
+    <strong>Retrospective meeting:</strong>
+    <%= l @sprint.retrospective_meeting_date %>
   </p>
-    <p>
-    <strong>Execution end date:</strong>
-    <%= @sprint.execution_end_date %>
-  </p>
-    <p>
-    <strong>Review meeting date:</strong>
-    <%= @sprint.review_meeting_date %>
-  </p>
-    <p>
-    <strong>Retrospective meeting date:</strong>
-    <%= @sprint.retrospective_meeting_date %>
-  </p>
-    <p>
+
+  <p>
     <strong>Release:</strong>
     <%= @sprint.release_id %>
   </p>

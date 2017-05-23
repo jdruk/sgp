@@ -10,57 +10,91 @@
     </div>
   <% end %>
 
-    <div class="inline field">
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-    </div>
+  <div class="inline field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
 
-    <div class="inline field">
-      <%= f.label :start_date %>
-    <%= f.date_select :start_date %>
+  <div class="inline field"><label>Duração</label></div>
+  <div class="inline fields">
+    <div class="ui calendar">
+      <div class="ui input left icon">
+        <i class="calendar icon"></i>
+        <%= f.text_field :start_date, placeholder: 'Data inicial' %>
+      </div>
     </div>
-
-    <div class="inline field">
-      <%= f.label :end_date %>
-    <%= f.date_select :end_date %>
+    <p style="margin-right: 1em; margin-left: 1em">à</p>
+    <div class="ui calendar">
+      <div class="ui input left icon">
+        <i class="calendar icon"></i>
+        <%= f.text_field :end_date, placeholder: 'Data final' %>
+      </div>
     </div>
+  </div>
 
-    <div class="inline field">
-      <%= f.label :planning_start_date %>
-    <%= f.date_select :planning_start_date %>
+  <div class="inline field"><label>Planejamento</label></div>
+  <div class="inline fields">
+    <div class="ui calendar">
+      <div class="ui input left icon">
+        <i class="calendar icon"></i>
+        <%= f.text_field :planning_start_date, placeholder: 'Data inicial' %>
+      </div>
     </div>
-
-    <div class="inline field">
-      <%= f.label :planning_end_date %>
-    <%= f.date_select :planning_end_date %>
+    <p style="margin-right: 1em; margin-left: 1em">à</p>
+    <div class="ui calendar">
+      <div class="ui input left icon">
+        <i class="calendar icon"></i>
+        <%= f.text_field :planning_end_date, placeholder: 'Data final' %>
+      </div>
     </div>
+  </div>
 
-    <div class="inline field">
-      <%= f.label :execution_start_date %>
-    <%= f.date_select :execution_start_date %>
+  <div class="inline field"><label>Execução</label></div>
+  <div class="inline fields">
+    <div class="ui calendar">
+      <div class="ui input left icon">
+        <i class="calendar icon"></i>
+        <%= f.text_field :execution_start_date, placeholder: 'Data inicial' %>
+      </div>
     </div>
-
-    <div class="inline field">
-      <%= f.label :execution_end_date %>
-    <%= f.date_select :execution_end_date %>
+    <p style="margin-right: 1em; margin-left: 1em">à</p>
+    <div class="ui calendar">
+      <div class="ui input left icon">
+        <i class="calendar icon"></i>
+        <%= f.text_field :execution_end_date, placeholder: 'Data final' %>
+      </div>
     </div>
+  </div>
 
-    <div class="inline field">
-      <%= f.label :review_meeting_date %>
-    <%= f.date_select :review_meeting_date %>
+  <div class="inline field">
+    <label>Review meeting</label>
+    <div class="ui calendar">
+      <div class="ui input left icon">
+        <i class="calendar icon"></i>
+        <%= f.text_field :review_meeting_date, placeholder: 'Data' %>
+      </div>
     </div>
+  </div>
 
-    <div class="inline field">
-      <%= f.label :retrospective_meeting_date %>
-    <%= f.date_select :retrospective_meeting_date %>
+  <div class="inline field">
+    <label>Retrospective meeting</label>
+    <div class="ui calendar">
+      <div class="ui input left icon">
+        <i class="calendar icon"></i>
+        <%= f.text_field :retrospective_meeting_date, placeholder: 'Data' %>
+      </div>
     </div>
+  </div>
 
-    <div class="inline field">
-      <%= f.label :release_id %>
-      <%= f.collection_select(:release_id,Release.all,:id,:version,{:prompt=>true},{class: 'ui search dropdown'}) %>
-    </div>
+  <div class="inline field">
+    <%= f.label :release_id %>
+    <%= f.collection_select(:release_id,Release.all,:id,:version,{:prompt=>true},{class: 'ui search dropdown'}) %>
+  </div>
+<% end %>
 
-  <% end %>
+<p></p>
+<p></p>
+<p></p>
 
 <script type="text/javascript">
   $('.save').click(function(){
@@ -68,4 +102,6 @@
   });
 
   $('.ui.search.dropdown').dropdown({ allowLabels:true});
+
+  $('.ui.calendar').calendar({type: 'date'});
 </script>

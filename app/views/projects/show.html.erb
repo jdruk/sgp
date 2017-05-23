@@ -10,15 +10,6 @@
   </div>
   <!-- /NAVBAR -->
 
-  <!-- BREADCRUMB -->
-  <div class="ui breadcrumb">
-    <%= link_to "Projetos", projects_path, class: 'section' %>
-    <div class="divider"> / </div>
-
-    <div class="active section"><%= @project.name %></div>
-  </div>
-  <!-- /BREADCRUMB -->
-
   <p></p>
 
   <p>
@@ -32,7 +23,7 @@
   <p>
     <strong>
       <i class="signal icon"></i> 
-      Size:
+      Tamanho:
     </strong>
     <%= @project.size %> Story points
   </p>
@@ -40,7 +31,7 @@
   <p>
     <strong>
       <i class="calendar icon"></i>
-      Start date:
+      Data de inicio:
     </strong>
     <%= l @project.start_date %>
   </p>
@@ -48,7 +39,7 @@
   <p>
     <strong>
       <i class="calendar icon"></i>
-      End date:
+      Data final:
     </strong>
     <%= l @project.end_date %>
   </p>
@@ -76,7 +67,7 @@
       <div class="content">
         <div class="header">Product Backlog</div>
         <div class="description">
-          Lista de user stories (requisitos na visão do usuário)
+          Gerencie aqui as user stories (requisitos na visão do usuário).
         </div>
       </div>
 
@@ -90,7 +81,7 @@
       <div class="content">
         <div class="header">Sprints</div>
         <div class="description">
-          Ciclos de trabalho da equipe
+          Gerencie aqui frequência na entrega de valor ao negócio.
         </div>
       </div>
 
@@ -104,7 +95,7 @@
       <div class="content">
         <div class="header">Releases</div>
         <div class="description">
-          ......
+          Gerencie aqui as fases de entrega do software.
         </div>
       </div>
 
@@ -118,7 +109,7 @@
       <div class="content">
         <div class="header">Membros</div>
         <div class="description">
-          ......
+          Gerencie aqui a equipe participante desse projeto.
         </div>
       </div>
 

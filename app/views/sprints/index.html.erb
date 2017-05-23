@@ -11,32 +11,40 @@
   <table class="ui celled table">
     <thead>
       <tr>
-                <th>Start date</th>
-                <th>End date</th>
-                <th>Planning start date</th>
-                <th>Planning end date</th>
-                <th>Execution start date</th>
-                <th>Execution end date</th>
-                <th>Review meeting date</th>
-                <th>Retrospective meeting date</th>
-                <th>Release</th>
-                <th width="250">Ações</th>
+        <th>Nome</th>
+        <th>Duração</th>
+        <th>Planejamento</th>
+        <th>Execução</th>
+        <th>Review meeting</th>
+        <th>Retrospective meeting</th>
+        <th>Release</th>
+        <th width="250">Ações</th>
       </tr>
     </thead>
 
     <tbody>
       <% @sprints.each do |sprint| %>
         <tr>
-                    <td><%= sprint.start_date %></td>
-                    <td><%= sprint.end_date %></td>
-                    <td><%= sprint.planning_start_date %></td>
-                    <td><%= sprint.planning_end_date %></td>
-                    <td><%= sprint.execution_start_date %></td>
-                    <td><%= sprint.execution_end_date %></td>
-                    <td><%= sprint.review_meeting_date %></td>
-                    <td><%= sprint.retrospective_meeting_date %></td>
-                    <td><%= sprint.release_id %></td>
-                    <td>
+          <td><%= sprint.name %></td>
+          <td class="ui center aligned">
+            <%= l sprint.start_date %>
+            <br>à<br> 
+            <%= l sprint.end_date %>    
+          </td>
+          <td class="ui center aligned">
+            <%= l sprint.planning_start_date %>
+            <br>à<br> 
+            <%= l sprint.planning_end_date %>    
+          </td>
+          <td class="ui center aligned">
+            <%= l sprint.execution_start_date %>
+            <br>à<br> 
+            <%= l sprint.execution_end_date %>    
+          </td>
+          <td class="ui center aligned"><%= l sprint.review_meeting_date %></td>
+          <td class="ui center aligned"><%= l sprint.retrospective_meeting_date %></td>
+          <td class="ui center aligned"><%= sprint.release.name unless sprint.release.nil?  %></td>
+          <td>
             <div class="ui buttons">
             <%= link_to 'Exibir', sprint, class: 'ui blue basic button' %>
             <%= link_to 'Editar', edit_sprint_path(sprint), class: 'ui blue basic button' %>

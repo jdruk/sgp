@@ -34,7 +34,7 @@
       
       <%= f.collection_select( :sprint_id, Sprint.all, :id, :name, {:prompt => 'Sprint'}, {class: 'ui search dropdown', placeholder: 'Sprint'} ) %>
 
-      <%= f.select :status, options_for_select({pendent: 1, development: 2, test: 3, completed: 4}), {:prompt => 'Status'}, { :class => 'ui search dropdown', placeholder: 'Status' } %>
+      <%= f.select :status, options_for_select({pendent: 1, development: 2, test: 3, completed: 4}), {:prompt => false}, { :class => 'ui search dropdown', placeholder: 'Status' } %>
     </div>
 
   <% end %>

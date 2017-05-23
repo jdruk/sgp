@@ -13,7 +13,7 @@ class Task < ActiveRecord::Base
 	validates :user_story_id, presence: true
 
   def status_label
-    labels = {1 => :pendent, 2 => :development, 3 => :test, 4 => :completed}
+    labels = {1 => 'Pendente', 2 => 'Desenvolvimento', 3 => 'Teste', 4 => 'Concluída', 5 => 'Depreciada'}
     return labels[self.status]
   end
 end
