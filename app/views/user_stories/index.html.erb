@@ -106,7 +106,7 @@
               </div>
 
               <div class="field">
-                <%= f.submit 'Adicionar', class: 'ui teal labeled button' %>
+                <%= f.submit 'Adicionar', class: 'ui teal button' %>
               </div>
             <% end %>
           </div>
@@ -133,11 +133,11 @@
 
               <div class="field">
                 <label><strong>Descrição: </strong></label>
-                <%= f.text_field :description %>
+                <%= f.text_area :description %>
               </div>
               
               <div class="field">
-                <label><strong>Skills: </strong></label>
+                <label><strong>Skills necessárias: </strong></label>
                 <%= f.select :ability_ids, Ability.all.collect {|x| [x.name, x.id]}, {prompt: 'Selecionar Skills'}, multiple: true, class: "ui search dropdown" %>
               </div>
               
@@ -147,7 +147,7 @@
               </div>
 
               <div class="field">
-                <%= f.submit 'Adicionar', class: 'ui teal labeled button' %>
+                <%= f.submit 'Adicionar', class: 'ui teal button' %>
               </div>
             <% end %>
           </div>
