@@ -15,5 +15,15 @@
   <i class="grid layout icon"></i>
   Projetos
   <% end %>
+  
+  <%= link_to ranks_path, class: "#{is_current_page?(ranks_path)} item" do %>
+  <i class="trophy icon"></i>
+  Ranks
+  <% end %>
+
+  <%= link_to achievements_path, class: "#{is_current_page?(achievements_path)} item" do %>
+  <i class="book icon"></i>
+  Achievement
+  <% end %>
 
 </div>

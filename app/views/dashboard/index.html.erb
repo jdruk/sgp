@@ -10,4 +10,34 @@
       <div class="sub header">Sistema de Gerenciamento de Projetos</div>
     </div>
   </h1>
+
+  <center>
+    <canvas id="mySkills" width="400" height="400"></canvas>
+  </center>
 </div>
+
+<script type="text/javascript">
+  var ctx = $("#mySkills");
+  //ctx.canvas.width = 300;
+  //ctx.canvas.height = 300;
+  
+  var data = {
+      labels: ["Skill 1", "Skill 2", "Skill 3", "Skill 4", "Skill 5"],
+      datasets: [
+        {
+          data: [65, 59, 90, 81, 56]
+        }
+      ]
+  };
+
+  var myRadarChart = new Chart(ctx, {
+    type: 'radar',
+    data: data,
+    options: {
+      maintainAspectRatio: false,
+      legend: {
+        display: false,
+      }
+    }
+  });
+</script>
