@@ -8,7 +8,7 @@ class ScrumboardController < ApplicationController
     end
     
     if task.status == 1
-      task.update(status: 2)
+      task.update(status: 2, start_date: DateTime.now)
     end
 
     redirect_to scrumboard_path(task.user_story.project.id)
@@ -45,7 +45,7 @@ class ScrumboardController < ApplicationController
 
   def done_task
     task = Task.find(params[:id])
-    task.update(status: 4)
+    task.update(status: 4, end_date: DateTime.now)
 
     redirect_to scrumboard_path(task.user_story.project.id)
   end

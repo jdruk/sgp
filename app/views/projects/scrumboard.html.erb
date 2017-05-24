@@ -1,6 +1,6 @@
 <h1>Scrumboard</h1>
 
-<div class="ui top pointing secondary attached tabular menu">
+<div class="ui top attached tabular menu">
   <% @project.sprints.each_with_index do |sprint, i| %>
     <a class="item <%= 'active' if i == 0 %>" data-tab="tab-<%= sprint.id %>"><%= sprint.name %></a>
   <% end %>
@@ -8,6 +8,44 @@
 
 <% @project.sprints.each_with_index do |sprint, i| %>
 <div class="ui bottom attached tab segment <%= 'active' if i == 0 %>" data-tab="tab-<%= sprint.id %>">
+
+  <table class="ui very compact celled table">
+    <thead>
+      <tr>
+        <th>Duração</th>
+        <th>Planejamento</th>
+        <th>Execução</th>
+        <th>Review meeting</th>
+        <th>Retrospective meeting</th>
+        <th>Release</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>
+          <%= l sprint.start_date %> à <%= l sprint.end_date %>    
+        </td>
+        <td>
+          <%= l sprint.planning_start_date %> à <%= l sprint.planning_end_date %>    
+        </td>
+        <td>
+          <%= l sprint.execution_start_date %> à <%= l sprint.execution_end_date %>    
+        </td>
+        <td><%= l sprint.review_meeting_date %></td>
+        <td><%= l sprint.retrospective_meeting_date %></td>
+        <td><%= sprint.release.version unless sprint.release.nil? %></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="ui teal progress" id="sprint-progress" data-percent="<%= sprint.progress %>">
+    <div class="bar"></div>
+    <div class="label">
+      <%= sprint.progress %>% Concluído
+    </div>
+  </div>
+
   <table class="ui very compact celled table">
     <thead>
       <tr>
@@ -247,6 +285,20 @@
                       Refazer
                     <% end %>
                   </div>
+                  <p></p>
+                  <% unless task.start_date.nil? %>
+                  <p>
+                    <strong>Inicio em:</strong>
+                    <%= l task.start_date %>
+                  </p>
+                  <% end %>
+                  
+                  <% unless task.end_date.nil? %>
+                  <p>
+                    <strong>Concluído em:</strong>
+                    <%= l task.end_date %>
+                  </p>
+                  <% end %>
                 </div>
               </div>
               <div class="extra content">
@@ -276,4 +328,6 @@
     $('.'+$(this).attr('data-modal')).modal('show');
     return false;
   });
+
+  $('.progress').progress();
 </script>
