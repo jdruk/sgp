@@ -40,12 +40,24 @@ class ScrumboardController < ApplicationController
     task = Task.find(params[:id])
     task.update(status: 2)
 
+    if task.user_story.tasks.count == task.user_story.tasks.where(status: 4).count
+      task.user_story.update(status: 4)
+    else
+      task.user_story.update(status: 2)
+    end
+
     redirect_to scrumboard_path(task.user_story.project.id)
   end
 
   def done_task
     task = Task.find(params[:id])
     task.update(status: 4, end_date: DateTime.now)
+
+    if task.user_story.tasks.count == task.user_story.tasks.where(status: 4).count
+      task.user_story.update(status: 4)
+    else
+      task.user_story.update(status: 2)
+    end
 
     redirect_to scrumboard_path(task.user_story.project.id)
   end

@@ -3,10 +3,12 @@ class Project < ActiveRecord::Base
   has_many :themes
   has_many :sprints
   has_many :releases
-  has_many :user_stories
   has_many :function_user_projects
   has_many :functions, through: :function_user_projects
   has_many :users, through: :function_user_projects
+
+  has_many :user_stories
+  has_many :tasks, through: :user_stories
 
   validates :name, presence: true
 
@@ -41,8 +43,13 @@ class Project < ActiveRecord::Base
   end
 
   def progress
-    count = self.user_stories.count
-    done = self.user_stories.where(status: 4).count
+    # progress per user story
+    # count = self.user_stories.count
+    # done = self.user_stories.where(status: 4).count
+
+    # progress per tasks
+    count = self.tasks.count
+    done = self.tasks.where(status: 4).count
 
     if count > 0
       return done * 100 / count
