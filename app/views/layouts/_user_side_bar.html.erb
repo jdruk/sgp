@@ -1,7 +1,8 @@
 <!-- side left menu -->
 <div class="ui vertical inverted left visible sidebar menu overlay labeled icon">
   <%= link_to root_path, class: "item" do %>
-    <%= image_tag "image.svg", class: "ui small circular image" %>
+    <%= image_tag "avatar.svg", class: "ui small circular image" %>
+    <br>
     <%= current_user.name %>
   <% end %>
 
