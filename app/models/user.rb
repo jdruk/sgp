@@ -25,4 +25,31 @@ class User < ActiveRecord::Base
   belongs_to :local
   #has_and_belongs_to_many :tasks
 
+  def skill_level(xp)
+    # curva de experiência
+    # xp = []; (1..10).each {|i| xp << 2 ** i}; p xp
+
+    xp_levels = []; (1..10).each {|i| xp_levels << 2 ** i}
+
+    level = 0
+    xp_levels.each_with_index { |xpl, i| level = i + 1 if xpl <= xp && xp > 0 }
+    return level
+  end
+
+  def xp_required_to_next_level(skill_level)
+    xp_levels = []; (1..10).each {|i| xp_levels << 2 ** i}
+    return xp_levels[skill_level]
+  end
+
+  def xp(skill)
+    xp_count = 0
+
+    skill.tasks.each do |task|
+      unless task.users.where(id: self.id).empty?
+        xp_count += task.user_story.story_points
+      end
+    end
+
+    return xp_count
+  end
 end

@@ -1,8 +1,4 @@
 <div class="ui container">
-  <p></p>
-  <p></p>
-  <p></p>
-  <p></p>
   <h1 class="ui center aligned icon header">
     <i class="users icon"></i>
     <div class="content">
@@ -11,33 +7,40 @@
     </div>
   </h1>
 
-  <center>
+  <h2>Minhas Skills</h2>
+  <div class="ui four cards">
+  <% @skills.each do |skill| %>
+    <div class="ui link card">
+      <div class="content">
+        <div class="header"><%= skill.name %></div>
+      </div>
+
+      <div class="content">
+        <div class="description">
+          <h1>Nível: <%= current_user.skill_level(current_user.xp(skill)) %></h1>
+          <p></p>
+          <div class="ui tiny teal progress" data-value="<%= current_user.xp(skill) %>" data-total="<%= current_user.xp_required_to_next_level(current_user.xp(skill)) %>">
+            <div class="bar"></div>
+            <div class="label">
+              <%= current_user.xp(skill) %> XP / 
+              <%= current_user.xp_required_to_next_level(current_user.xp(skill)) %> XP para o Nível 
+              <%= current_user.skill_level(current_user.xp(skill)) + 1 %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  <% end %>
+  </div>
+
+
+  <!-- <div class="ui medium bordered image">
     <canvas id="mySkills" width="400" height="400"></canvas>
-  </center>
+  </div> -->
+
 </div>
 
 <script type="text/javascript">
-  var ctx = $("#mySkills");
-  //ctx.canvas.width = 300;
-  //ctx.canvas.height = 300;
-  
-  var data = {
-      labels: ["Skill 1", "Skill 2", "Skill 3", "Skill 4", "Skill 5"],
-      datasets: [
-        {
-          data: [65, 59, 90, 81, 56]
-        }
-      ]
-  };
-
-  var myRadarChart = new Chart(ctx, {
-    type: 'radar',
-    data: data,
-    options: {
-      maintainAspectRatio: false,
-      legend: {
-        display: false,
-      }
-    }
-  });
+  $('.progress').progress();
 </script>
