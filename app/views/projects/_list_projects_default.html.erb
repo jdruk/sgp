@@ -12,7 +12,7 @@
         <p class="info"><strong>Membros:</strong> <%= project.members_number %></p>
         <p class="info"><strong>Sprint atual:</strong> <%= project.current_sprint %></p>
         <p></p>
-        <div class="ui teal progress" id="project-progress" data-percent="<%= project.progress %>">
+        <div class="ui teal progress" data-percent="<%= project.progress %>">
           <div class="bar"></div>
           <div class="label">
             <%= project.progress %>%
@@ -29,3 +29,7 @@
 
 <% end %>
 </div>
+
+<script type="text/javascript">
+  $('.progress').progress();
+</script>

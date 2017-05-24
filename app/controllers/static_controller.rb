@@ -12,6 +12,7 @@ class StaticController < ApplicationController
           redirect_to projects_path
         else
           redirect_to dashboard_path
+          # redirect_to projects_path
         end
       end
     end

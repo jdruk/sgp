@@ -1,12 +1,17 @@
 <!-- side left menu -->
 <div class="ui vertical inverted left visible sidebar menu overlay labeled icon">
+  <%= link_to root_path, class: "item" do %>
+    <%= image_tag "image.svg", class: "ui small circular image" %>
+    <%= current_user.name %>
+  <% end %>
+
   <%= link_to root_path, class: "#{is_current_page?(dashboard_path)} item" do %>
-  <i class="dashboard icon"></i>
-  Dashboard
+  <i class="home icon"></i>
+  Inicio
   <% end %>
 
   <%= link_to projects_path, class: "#{is_current_page?(projects_path)} item" do %>
-  <i class="sitemap icon"></i>
+  <i class="grid layout icon"></i>
   Projetos
   <% end %>
 
