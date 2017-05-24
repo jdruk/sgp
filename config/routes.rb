@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   # CRUMBOARD
-  get '/task/take/:id', to: 'scrumboard#take_task', as: 'take_task'
+  get '/task/take_task/:id', to: 'scrumboard#take_task', as: 'take_task'
+  get '/task/get_out_task/:id', to: 'scrumboard#get_out_task', as: 'get_out_task'
+  get '/task/send_task_to_test/:id', to: 'scrumboard#send_task_to_test', as: 'send_task_to_test'
+  get '/task/redo_task/:id', to: 'scrumboard#redo_task', as: 'redo_task'
+  get '/task/done_task/:id', to: 'scrumboard#done_task', as: 'done_task'
 
   get '/project/scrumboard/:id', to: 'projects#scrumboard', as: 'scrumboard'
 

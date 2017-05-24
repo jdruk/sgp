@@ -21,8 +21,7 @@
     <tbody>
       <tr>
         <td class="top aligned">
-
-        <% sprint.user_stories.each do |us| %>
+          <% sprint.user_stories.each do |us| %>
           
           <%= render partial: 'projects/modal_tasks', locals: {us: us} %>
 
@@ -75,7 +74,6 @@
           <% end %>
           <!-- /CARD -->
           <% end %>
-
         </td>
 
         <td class="top aligned">
@@ -106,26 +104,26 @@
                   </p>
                   <% end %>
 
-                  <p>
-                    <a href="#" data-modal="usertory-<%= us.id %>" class="ui compact mini labeled button modal-task">
+                  <div class="ui compact mini icon buttons">
+                    <a href="#" data-modal="usertory-<%= us.id %>" class="ui compact mini icon button modal-task" title="Detalhes">
                       <i class="search icon"></i>
                     </a>
 
-                    <%= link_to take_task_path(task.id), class: 'ui compact mini orange button' do %>
+                    <%= link_to get_out_task_path(task.id), class: 'ui compact mini orange button' do %>
                       <i class="reply icon"></i>
                       Sair
                     <% end %>
 
                     <%= link_to take_task_path(task.id), class: 'ui compact mini teal button' do %>
-                      <i class="share icon"></i>
-                      Participar
+                      <i class="sign in icon"></i>
+                      Ajudar
                     <% end %>
 
-                    <%= link_to take_task_path(task.id), class: 'ui compact mini blue button' do %>
+                    <%= link_to send_task_to_test_path(task.id), class: 'ui compact mini blue button', title: 'Enviar para teste' do %>
                       <i class="share icon"></i>
                       Teste
                     <% end %>
-                  </p>
+                  </div>
 
                 </div>
               </div>
@@ -143,8 +141,127 @@
           <% end %>
         </td>
 
-        <td></td>
-        <td></td>
+        <td class="top aligned">
+          <% sprint.user_stories.each do |us| %>
+          
+          <%# render partial: 'projects/modal_tasks', locals: {us: us} %>
+
+          <% us.tasks.where(status: 3).each do |task| %>
+            <p></p>
+            <!-- CARD -->
+            <div class="ui blue card">
+              <div class="content">
+                <div class="header">Tarefa</div>
+                <div class="meta">
+                  <span class="category"><%= task.description %></span>
+                </div>
+                <div class="description">
+                  <% if task.abilities.count > 0 %>
+                  <p>
+                    <strong>
+                      <i class="gift icon"></i>
+                      Recompensa(s):
+                    </strong><br>
+                    <%= us.story_points %> pontos de XP na(s) Skill(s):
+                    <% task.abilities.each do |a| %>
+                      <br>- <%= a.name %>
+                    <% end %>
+                  </p>
+                  <% end %>
+
+                  <div class="ui compact mini icon buttons">
+                    <a href="#" data-modal="usertory-<%= us.id %>" class="ui compact mini icon button modal-task" title="Detalhes">
+                      <i class="search icon"></i>
+                    </a>
+
+                    <%= link_to get_out_task_path(task.id), class: 'ui compact mini orange button' do %>
+                      <i class="reply icon"></i>
+                      Sair
+                    <% end %>
+
+                    <%= link_to take_task_path(task.id), class: 'ui compact mini teal button', title: 'Participar da tarefa' do %>
+                      <i class="sign in icon"></i>
+                      Ajudar
+                    <% end %>
+
+                    <%= link_to redo_task_path(task.id), class: 'ui compact mini teal button', title: 'Enviar para teste' do %>
+                      <i class="reply icon"></i>
+                      Refazer
+                    <% end %>
+
+                    <%= link_to done_task_path(task.id), class: 'ui compact mini green button' do %>
+                      <i class="share icon"></i>
+                      Pronto
+                    <% end %>
+                  </div>
+
+                </div>
+              </div>
+              <div class="extra content">
+                <div class="right floated author">
+                  <% task.users.each do |u| %>
+                    <%= image_tag 'image.svg', class: 'ui avatar image' %> <%= u.name %>
+                  <% end %>
+                  <%# image_tag 'image.svg', class: 'ui avatar image' %> <!-- Sicrano -->
+                </div>
+              </div>
+            </div>
+          <% end %>
+          <!-- /CARD -->
+          <% end %>
+        </td>
+
+        <td class="top aligned">
+          <% sprint.user_stories.each do |us| %>
+          
+          <% us.tasks.where(status: 4).each do |task| %>
+            <p></p>
+            <!-- CARD -->
+            <div class="ui green card">
+              <div class="content">
+                <div class="header">Tarefa</div>
+                <div class="meta">
+                  <span class="category"><%= task.description %></span>
+                </div>
+                <div class="description">
+                  <% if task.abilities.count > 0 %>
+                  <p>
+                    <strong>
+                      <i class="gift icon"></i>
+                      Recompensa(s):
+                    </strong><br>
+                    <%= us.story_points %> pontos de XP na(s) Skill(s):
+                    <% task.abilities.each do |a| %>
+                      <br>- <%= a.name %>
+                    <% end %>
+                  </p>
+                  <% end %>
+
+                  <div class="ui compact mini icon buttons">
+                    <a href="#" data-modal="usertory-<%= us.id %>" class="ui compact mini icon button modal-task" title="Detalhes">
+                      <i class="search icon"></i>
+                    </a>
+
+                    <%= link_to redo_task_path(task.id), class: 'ui compact mini teal button', title: 'Enviar para teste' do %>
+                      <i class="reply icon"></i>
+                      Refazer
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+              <div class="extra content">
+                <div class="right floated author">
+                  <% task.users.each do |u| %>
+                    <%= image_tag 'image.svg', class: 'ui avatar image' %> <%= u.name %>
+                  <% end %>
+                  <%# image_tag 'image.svg', class: 'ui avatar image' %> <!-- Sicrano -->
+                </div>
+              </div>
+            </div>
+          <% end %>
+          <!-- /CARD -->
+          <% end %>
+        </td>
       </tr>
     </tbody>
   </table>
@@ -155,13 +272,8 @@
 <script type="text/javascript">
   $('.tabular.menu .item').tab();
 
-  $(document).ready(function() {
-    //$('.sortable').tablesort();
-  });
-
   $('.modal-task').click(function(){
     $('.'+$(this).attr('data-modal')).modal('show');
     return false;
   });
-
 </script>
