@@ -52,6 +52,7 @@ class ScrumboardController < ApplicationController
   def done_task
     task = Task.find(params[:id])
     task.update(status: 4, end_date: DateTime.now)
+    
     Notification.create(notify_type: 'take_xp', user: current_user, target: task)
 
     if task.user_story.tasks.count == task.user_story.tasks.where(status: 4).count

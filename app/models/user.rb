@@ -21,6 +21,8 @@ class User < ActiveRecord::Base
 
   has_many :users_tasks, dependent: :destroy
   has_many :tasks, through: :users_tasks
+
+  has_many :notifications
   
   belongs_to :local
   #has_and_belongs_to_many :tasks

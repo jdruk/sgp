@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-	include Pundit
+	# include Pundit
 	include ProjectsHelper
 
 	protect_from_forgery
@@ -7,10 +7,10 @@ class ApplicationController < ActionController::Base
 
 	before_action :authenticate_user!, except: [:home_page]
 
-	rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+	# rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
 	private
-	
+
 		def user_not_authorized(exception)
 			policy_name = exception.policy.class.to_s.underscore
 
