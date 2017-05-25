@@ -5,7 +5,7 @@
       <i class="alarm icon"></i>
       Notificações
       <% if Notification.unread_count(current_user) > 0 %>
-        <div class="ui teal label"><%= Notification.unread_count(current_user) %></div>
+        <div class="ui red label"><%= Notification.unread_count(current_user) %></div>
       <% else %>
         <div class="ui label">0</div>
       <% end %>

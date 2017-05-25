@@ -62,5 +62,7 @@ Rails.application.routes.draw do
   #resources :users
   resources :function_user_projects
 
-  mount Notifications::Engine => "/notifications"
+  # mount Notifications::Engine => "/notifications"
+  resources :notifications
+  delete '/clean', to: 'notifications#clean', as: 'clean_notifications'
 end
