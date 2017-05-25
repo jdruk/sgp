@@ -22,4 +22,4 @@ end
 gem 'devise'
 gem 'thin'
 gem 'rails-i18n'
-# gem 'ransack' # gem for search
+gem 'notifications' # https://github.com/rails-engine/notifications

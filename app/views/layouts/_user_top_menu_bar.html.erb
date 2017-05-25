@@ -1,12 +1,21 @@
 <!-- Following Menu for user logged in -->
 <div class="ui large top fixed no-hidden inverted menu">
   <div class="right menu">
+    <%= link_to notifications_path, class: "#{is_current_page?(notifications_path)} item", title: 'Notificações' do %>
+      <i class="alarm icon"></i>
+      Notificações
+      <% if Notification.unread_count(current_user) > 0 %>
+        <div class="ui teal label"><%= Notification.unread_count(current_user) %></div>
+      <% else %>
+        <div class="ui label">0</div>
+      <% end %>
+    <% end %>
     <div class="ui dropdown item">
       <i class="user icon"></i> 
       <%= current_user.name %>
       <i class="dropdown icon"></i>
       <div class="menu">
-        <%= link_to edit_user_registration_path, class: 'item' do %>
+        <% link_to edit_user_registration_path, class: 'item' do %>
         <i class="write icon"></i>
         Editar perfil
         <% end %>
