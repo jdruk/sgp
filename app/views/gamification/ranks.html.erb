@@ -1,2 +1,32 @@
-<h1>Gamification#ranks</h1>
-<p>Find me in app/views/gamification/ranks.html.erb</p>
+<div class="ui container">
+  <h1 class="ui center aligned icon header">
+    <i class="trophy icon"></i>
+    <div class="content">
+      Rank
+      <div class="sub header">Veja os melhores do rank!</div>
+    </div>
+  </h1>
+
+  <table class="ui celled table">
+    <thead>
+      <tr>
+        <th width="10%">Posição</th>
+        <th>Usuário</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @ranks.each_with_index do |rank, i| %>
+      <tr>
+        <td class="ui center aligned">
+          <h2><%= i + 1 %>º</h2>
+        </td>
+        <td>
+          <h2><%= rank["name"] %></h2>
+          <p>Total de Pontos <%= rank["sum_story_points"] %> XP</p>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

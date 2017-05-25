@@ -52,4 +52,14 @@ class User < ActiveRecord::Base
 
     return xp_count
   end
+
+  def self.rank
+    # por quantidade de tarefas
+    # User.includes(:tasks).where(tasks: {status: 4}).order("count_id desc").group(:name).count
+
+    # por pontos de XP
+    query = "SELECT SUM('user_stories'.'story_points') AS sum_story_points, 'users'.'name' AS name FROM 'users' LEFT OUTER JOIN 'users_tasks' ON 'users_tasks'.'user_id' = 'users'.'id' LEFT OUTER JOIN 'tasks' ON 'tasks'.'id' = 'users_tasks'.'task_id' LEFT OUTER JOIN 'user_stories' ON 'user_stories'.'id' = 'tasks'.'user_story_id' WHERE 'users'.'group' = 1 GROUP BY 'users'.'name'  ORDER BY sum_story_points desc"
+    connection = ActiveRecord::Base.connection
+    connection.execute(query)
+  end
 end

@@ -3,5 +3,6 @@ class GamificationController < ApplicationController
   end
 
   def ranks
+    @ranks = User.rank
   end
 end
