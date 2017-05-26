@@ -1,2 +1,90 @@
-<h1>Gamification#achievements</h1>
-<p>Find me in app/views/gamification/achievements.html.erb</p>
+<div class="ui container">
+  <h1 class="ui center aligned icon header">
+    <i class="book icon"></i>
+    <div class="content">
+      Achivements (Conquistas)
+      <div class="sub header">Veja suas conquistas aqui!</div>
+    </div>
+  </h1>
+
+  <table class="ui celled table">
+    <thead>
+      <tr>
+        <th width="" colspan="2">Conquistas</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr class=" <%= 'disabled' if current_user.projects.count < 1 %>">
+        <td width="10%">
+          <h1 class="ui center aligned icon">
+            <i class="book icon"></i>
+          </h1>
+        </td>
+        <td>
+          <h2>Hello World!</h2>
+          Entrar no meu primeiro projeto.
+        </td>
+      </tr>
+
+      <tr class=" <%= 'disabled' unless @done_first_project %>">
+        <td width="10%">
+          <h1 class="ui center aligned icon">
+            <i class="book icon"></i>
+          </h1>
+        </td>
+        <td>
+          <h2>Determinação!</h2>
+          Concluir meu primeiro projeto.
+        </td>
+      </tr>
+
+      <% @skills.each do |skill| %>
+      <tr class=" <%= 'disabled' if current_user.skill_level(current_user.xp(skill)) < 1 %>">
+        <td width="10%">
+          <h1 class="ui center aligned icon">
+            <i class="book icon"></i>
+          </h1>
+        </td>
+        <td>
+          <h2>Novato em <%= skill.name %></h2>
+          Completar o nível 1 nessa skill (habilidade).
+        </td>
+      </tr>
+      <% end %>
+
+      <% @skills.each do |skill| %>
+      <tr class=" <%= 'disabled' if current_user.skill_level(current_user.xp(skill)) < 5 %>">
+        <td width="10%">
+          <h1 class="ui center aligned icon">
+            <i class="book icon"></i>
+          </h1>
+        </td>
+        <td>
+          <h2>Mestre em <%= skill.name %></h2>
+          Chegar ao nível 5 nessa skill (habilidade).
+        </td>
+      </tr>
+      <% end %>
+
+      <% @skills.each do |skill| %>
+      <tr class=" <%= 'disabled' if current_user.skill_level(current_user.xp(skill)) < 10 %>">
+        <td width="10%">
+          <h1 class="ui center aligned icon">
+            <i class="book icon"></i>
+          </h1>
+        </td>
+        <td>
+          <h2>Hacker em <%= skill.name %></h2>
+          Completar o nível 10 nessa skill (habilidade).
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<h1></h1>
+<h1></h1>
+<h1></h1>
+<h1></h1>

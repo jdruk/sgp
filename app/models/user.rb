@@ -46,7 +46,7 @@ class User < ActiveRecord::Base
   def xp(skill)
     xp_count = 0
 
-    skill.tasks.each do |task|
+    skill.tasks.where(status: 4).each do |task|
       unless task.users.where(id: self.id).empty?
         xp_count += task.user_story.story_points
       end

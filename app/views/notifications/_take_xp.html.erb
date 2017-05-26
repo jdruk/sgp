@@ -1,0 +1,10 @@
+<h2>
+  <i class="gift icon"></i>
+  Você ganhou <%= notification.target.user_story.story_points %> pontos de XP
+</h2>
+<p>
+  Nas habilidades:
+  <% notification.target.abilities.each do |skill| %>
+    <br> - <%= skill.name %>
+  <% end %>
+</p>

@@ -1,19 +1,22 @@
 <div class="notifications row">
   <div class="heading clearfix">
-    <%= t('notifications.all_notifications') %>
+    <h2>Notificações</h2>
 
-    <span class="pull-xs-right">
-      <%= link_to t('notifications.clean_all'), clean_notifications_path, class: 'btn btn-sm btn-secondary', method: 'delete' %>
+    <span class="">
+      <%= link_to clean_notifications_path, class: 'ui compact orange button', method: 'delete' do %>
+      <i class="trash icon"></i>
+      Limpar notificações
+      <% end %>
     </span>
   </div>
   <div class="list">
     <% if @notifications.blank? %>
-      <div class="no-records"><%= t('notifications.no_records') %></div>
+      <div class="no-records">Nenhuma notificação</div>
     <% else %>
       <% @notification_groups.each do |group, notifications| %>
         <div class="notification-group">
-          <div class="group-title"><%= group %></div>
           <%= render notifications %>
+          <div class="group-title"><%# group %></div>
         </div>
       <% end %>
     <% end %>
