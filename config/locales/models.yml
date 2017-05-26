@@ -1,0 +1,91 @@
+pt-BR:
+    activerecord:
+        models:
+          ability: Habilidade
+          function_user_project: Função Usuário e projeto
+          function: Função
+          language: Linguagem
+          local: Localidade
+          project: projeto
+          release: Lançamento
+          sprint: Ciclo
+          task_requirement: Requerimento de atividade
+          task: Atividade
+          theme: Tema
+          user_ability: Habilidade de usuário
+          user_language: Linguagem de usuário
+          user_story_acceptance_criterion: Critério de aceitação
+          user_story: Relato de usuário
+          user_task: Atividade de usuário
+          user: Usuário
+        attributes:
+          ability:
+            name: Nome
+            description: Descrição
+            scope: Escopo
+          function_user_project:
+            project_id: Projeto
+            function_id: Função
+            user_id: Usuário
+          function:
+            name: Nome
+          language:
+            name: Nome
+          local:
+            name: Nome
+            country: País
+            state: Estado
+            city: Cidade
+          project:
+            name: Nome
+            size: Tamanho
+            start_date: Data de ínicio
+            end_date: Data de termino
+            local_id: Localidade
+          release:
+            version: Versão
+            deliver_date: Data de entrega
+            project_id: Projeto
+          sprint:
+            project_id: Projeto
+            start_date: Data de ínicio
+            end_date: Data de termino
+            planning_start_date: Data de ínicio de planejamento
+            planning_end_date: Data de fim de planejamento
+            execution_start_date: Data de ínicio da execução
+            execution_end_date: Data de fim da execução
+            release_id: Lançamento
+            review_meeting_date:  Data da reunião de revisão
+            retrospective_meeting_date: Reunião de retrospectiva
+          task_requirement:
+            task_id: Atividade
+            ability_id: Habilidade
+            level: Nível
+          task:
+            description: Descrição
+            status: Estado
+            end_date: Data de termino
+            user_story_id: Relato de usuário
+          theme:
+            name: Nome
+            project_id: Projeto
+          user_ability:
+            user_id: Usuário
+            ability_id: Habilidade
+          user_language:
+            language_id: Linguagem
+            user_id: Usuário
+            proficiency: Proeficiência
+          user_story:
+            description: Descrição
+            business_value: Valor de negócio
+            status: Estado
+            story_points: Pontos de relator
+            theme_id: Tema
+          user_story_acceptance_criterion:
+            description: Descrição
+            status: Estado
+            user_story_id: Relator de usuário
+          user_task:
+            user_id: Usuário
+            task_id: Atividade

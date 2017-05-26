@@ -1,0 +1,11 @@
+pt-BR:
+  users:
+    create:
+      notice: "Usuário criado com sucesso."
+    update:
+      notice: "Usuário atualizado."
+    destroy:
+      notice: "Usuário excluido."
+    change_approved:
+      notice_true: "Usuário aprovado."
+      notice_false: "Usuário sem acesso ao sistema."
