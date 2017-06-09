@@ -27,7 +27,7 @@ group :development, :test do
   gem 'capistrano-rbenv', '~> 2.1'
 end
 
-#gem 'thin'
+gem 'thin'
 gem 'rails-i18n'
 gem 'notifications' # https://github.com/rails-engine/notifications
 gem 'devise'
